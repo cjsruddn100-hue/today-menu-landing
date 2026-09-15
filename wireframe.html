@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오늘은 뭐먹지 와이어프레임</title>
+<style>
+  :root{--line:#9aa0aa;--fill:#e9ebef;--fill2:#dfe2e8;--ink:#3a3f47;--muted:#7a828d;--accent:#5B5FEF;--paper:#f4f5f7;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Pretendard",-apple-system,"Malgun Gothic",sans-serif;background:var(--paper);color:var(--ink);padding:32px 16px;}
+  .sheet{max-width:1000px;margin:0 auto;}
+  .doc-title{text-align:center;margin-bottom:6px;font-size:24px;font-weight:800;}
+  .doc-sub{text-align:center;color:var(--muted);margin-bottom:24px;font-size:14px;}
+  .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
+  .chip{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);}
+  .chip b{color:var(--accent);}
+  .frame{border:2px solid var(--line);background:#fff;border-radius:8px;overflow:hidden;}
+  .sec{border-bottom:2px dashed var(--line);padding:18px 20px;position:relative;}
+  .sec:last-child{border-bottom:none;}
+  .tag{position:absolute;top:8px;right:10px;font-size:11px;color:var(--muted);}
+  .owner{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--line);border-radius:4px;padding:1px 7px;margin-right:6px;vertical-align:middle;}
+  .owner.A{background:#6b74e8;}.owner.B{background:#3ea36b;}.owner.C{background:#e0894a;}
+  .lbl{font-size:12px;color:var(--muted);margin-bottom:10px;}
+  .box{background:var(--fill);border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;}
+  .imgbox{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 10px,var(--fill2) 10px,var(--fill2) 20px);}
+  .bar{height:12px;background:var(--fill2);border-radius:4px;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-size:12px;border-radius:8px;padding:8px 16px;}
+  .cards{display:flex;gap:12px;}
+  .card{flex:1;min-height:110px;flex-direction:column;gap:8px;}
+  .card .bar{width:60%;}
+  .hd{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .logo{font-weight:800;color:var(--ink);}
+  .nav{display:flex;gap:14px;color:var(--muted);font-size:12px;}
+  .hero{display:flex;gap:20px;align-items:center;}
+  .hero>div{flex:1;}
+  .title-lines .bar{height:20px;margin-bottom:8px;}
+  .center{text-align:center;}
+  .mt8{margin-top:8px;}.mt12{margin-top:12px;}.mt16{margin-top:16px;}
+  .faq .box{justify-content:flex-start;padding:12px;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1 class="doc-title">오늘은 뭐먹지 — 랜딩페이지 와이어프레임</h1>
+  <p class="doc-sub">1페이지 · 데스크톱 기준 · 담당 A / B / C 표시</p>
+  <div class="legend">
+    <span class="chip"><b>메인컬러</b> #5B5FEF</span>
+    <span class="chip"><b>최대너비</b> 1200px</span>
+    <span class="chip"><b>버튼모서리</b> 8px</span>
+    <span class="chip"><b>섹션간격</b> 80px</span>
+    <span class="chip">폰트 Pretendard</span>
+  </div>
+  <div class="frame">
+    <div class="sec"><div class="tag">.header</div><div class="lbl"><span class="owner A">A</span>HEADER · 상단 고정 바</div>
+      <div class="hd"><span class="logo">오늘은 뭐먹지</span><span class="nav">서비스소개 · 주요기능 · 후기 · FAQ</span><span class="btn">시작하기</span></div></div>
+    <div class="sec"><div class="tag">.hero</div><div class="lbl"><span class="owner A">A</span>HERO · 첫인상 (제목 + 설명 + 버튼 + 이미지)</div>
+      <div class="hero"><div class="title-lines"><div class="bar" style="width:90%"></div><div class="bar" style="width:70%"></div>
+      <div class="box mt12" style="height:38px;justify-content:flex-start;">한 줄 설명 텍스트</div><div class="mt12"><span class="btn">지금 메뉴 추천받기</span></div></div>
+      <div><div class="box imgbox" style="height:180px;">메인 이미지 / 일러스트</div></div></div></div>
+    <div class="sec"><div class="tag">.service</div><div class="lbl"><span class="owner B">B</span>SERVICE · 이런 서비스예요</div>
+      <div class="center"><div class="box" style="height:24px;width:220px;margin:0 auto;">섹션 제목</div><div class="box mt12" style="height:56px;">서비스 한두 문장 소개</div></div></div>
+    <div class="sec"><div class="tag">.features</div><div class="lbl"><span class="owner B">B</span>FEATURES · 주요 기능 (카드 3개)</div>
+      <div class="center"><div class="box" style="height:24px;width:180px;margin:0 auto 12px;">섹션 제목</div></div>
+      <div class="cards">
+        <div class="box card"><div class="box imgbox" style="height:36px;width:36px;border-radius:50%;"></div><div class="bar"></div><div class="box" style="height:30px;width:90%;">설명</div></div>
+        <div class="box card"><div class="box imgbox" style="height:36px;width:36px;border-radius:50%;"></div><div class="bar"></div><div class="box" style="height:30px;width:90%;">설명</div></div>
+        <div class="box card"><div class="box imgbox" style="height:36px;width:36px;border-radius:50%;"></div><div class="bar"></div><div class="box" style="height:30px;width:90%;">설명</div></div>
+      </div></div>
+    <div class="sec"><div class="tag">.review</div><div class="lbl"><span class="owner C">C</span>REVIEW · 사용자 후기 (카드 2~3개)</div>
+      <div class="center"><div class="box" style="height:24px;width:180px;margin:0 auto 12px;">섹션 제목</div></div>
+      <div class="cards">
+        <div class="box card" style="min-height:90px;"><div class="box" style="height:36px;width:95%;">후기 내용</div><div class="bar" style="width:40%"></div></div>
+        <div class="box card" style="min-height:90px;"><div class="box" style="height:36px;width:95%;">후기 내용</div><div class="bar" style="width:40%"></div></div>
+        <div class="box card" style="min-height:90px;"><div class="box" style="height:36px;width:95%;">후기 내용</div><div class="bar" style="width:40%"></div></div>
+      </div></div>
+    <div class="sec faq"><div class="tag">.faq</div><div class="lbl"><span class="owner C">C</span>FAQ · 자주 묻는 질문 (목록)</div>
+      <div class="center"><div class="box" style="height:24px;width:180px;margin:0 auto 12px;">섹션 제목</div></div>
+      <div class="box">Q. 질문 1 &nbsp;———&nbsp; A. 답변</div><div class="box">Q. 질문 2 &nbsp;———&nbsp; A. 답변</div><div class="box">Q. 질문 3 &nbsp;———&nbsp; A. 답변</div></div>
+    <div class="sec" style="background:#f0f1f4;"><div class="tag">.footer</div><div class="lbl"><span class="owner A">A</span>FOOTER · 로고 + 저작권</div>
+      <div class="center"><div class="logo">오늘은 뭐먹지</div><div class="box mt8" style="height:20px;width:280px;margin:8px auto 0;">© 2026 오늘은 뭐먹지 팀</div></div></div>
+  </div>
+  <p class="doc-sub mt16">위→아래 순서로 스크롤되는 1페이지 구조입니다. 회색 박스는 실제 콘텐츠/이미지가 들어갈 자리예요.</p>
+</div>
+</body>
+</html>

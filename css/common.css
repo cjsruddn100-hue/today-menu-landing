@@ -1,0 +1,81 @@
+/* =========================================================
+   common.css  ―  팀 공통 스타일 (3명 모두 같이 사용)
+   ⚠ 이 파일은 팀 상의 없이 임의로 바꾸지 않습니다.
+   ========================================================= */
+
+/* --- 디자인 토큰 (공통 규칙 슬라이드 기준) --- */
+:root {
+  --color-main: #5B5FEF;   /* 메인 컬러 */
+  --color-text: #222222;   /* 기본 글자색 */
+  --color-sub: #666666;    /* 보조 글자색 */
+  --color-bg: #ffffff;     /* 배경색 */
+  --color-line: #eeeeee;   /* 구분선 */
+
+  --max-width: 1200px;     /* 콘텐츠 최대 너비 */
+  --radius: 8px;           /* 버튼 모서리 */
+  --section-gap: 80px;     /* 섹션 사이 간격 */
+}
+
+/* --- 기본 리셋 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Malgun Gothic", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- 공통 class (모두 같이 사용) --- */
+
+/* 콘텐츠를 가운데로 모으고 최대 너비를 제한 */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 공통 버튼 */
+.button {
+  display: inline-block;
+  background: var(--color-main);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* 모든 섹션의 위아래 간격 */
+section {
+  padding: var(--section-gap) 0;
+}
