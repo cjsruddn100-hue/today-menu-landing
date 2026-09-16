@@ -1,81 +1,482 @@
-/* =========================================================
-   common.css  ―  팀 공통 스타일 (3명 모두 같이 사용)
-   ⚠ 이 파일은 팀 상의 없이 임의로 바꾸지 않습니다.
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
 
-/* --- 디자인 토큰 (공통 규칙 슬라이드 기준) --- */
+/* ============================================================
+   오늘은뭐먹지 | 공통 디자인 시스템
+   사용 위치: src/styles/common.css
+   index.css 또는 main.tsx에서 한 번만 import 합니다.
+   ============================================================ */
+
 :root {
-  --color-main: #5B5FEF;   /* 메인 컬러 */
-  --color-text: #222222;   /* 기본 글자색 */
-  --color-sub: #666666;    /* 보조 글자색 */
-  --color-bg: #ffffff;     /* 배경색 */
-  --color-line: #eeeeee;   /* 구분선 */
+  /* Brand */
+  --color-primary: #f97316;
+  --color-primary-dark: #ea6000;
+  --color-primary-soft: rgba(249, 115, 22, 0.12);
+  --color-primary-soft-strong: rgba(249, 115, 22, 0.18);
+  --color-primary-border: rgba(249, 115, 22, 0.3);
 
-  --max-width: 1200px;     /* 콘텐츠 최대 너비 */
-  --radius: 8px;           /* 버튼 모서리 */
-  --section-gap: 80px;     /* 섹션 사이 간격 */
+  /* Background / surface */
+  --color-bg-light: #fdfcf8;
+  --color-bg-light-soft: #f5f2ec;
+  --color-bg-dark: #130f09;
+  --color-bg-dark-soft: #1e1810;
+  --color-surface: #ffffff;
+  --color-surface-dark: rgba(255, 255, 255, 0.04);
+  --color-surface-dark-hover: rgba(255, 255, 255, 0.07);
+
+  /* Text */
+  --color-text: #130f09;
+  --color-text-muted: #6b6557;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.52);
+  --color-text-on-dark-subtle: rgba(255, 255, 255, 0.4);
+
+  /* Border */
+  --color-border: #e8e3da;
+  --color-border-dark: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
+  --font-sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  /* Layout */
+  --content-max-width: 1152px;
+  --content-padding-desktop: 24px;
+  --content-padding-mobile: 16px;
+  --section-padding-y: 112px;
+  --section-padding-y-tablet: 88px;
+  --section-padding-y-mobile: 72px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-pill: 999px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Shadow */
+  --shadow-card: 0 12px 30px rgba(74, 46, 27, 0.1);
+  --shadow-card-hover: 0 18px 38px rgba(74, 46, 27, 0.16);
+  --shadow-dark: 0 20px 55px rgba(0, 0, 0, 0.18);
+
+  /* Motion */
+  --transition-fast: 160ms ease;
+  --transition-base: 220ms ease;
 }
 
-/* --- 기본 리셋 --- */
+/* ============================================================
+   Base
+   ============================================================ */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Malgun Gothic", sans-serif;
+  margin: 0;
+  background: var(--color-bg-light);
   color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.6;
+  font-family: var(--font-sans);
 }
 
-img {
-  max-width: 100%;
-  display: block;
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* --- 공통 class (모두 같이 사용) --- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.45);
+  outline-offset: 3px;
+}
 
-/* 콘텐츠를 가운데로 모으고 최대 너비를 제한 */
-.container {
-  width: 100%;
-  max-width: var(--max-width);
+/* ============================================================
+   Layout utilities
+   ============================================================ */
+
+.page-container {
+  width: min(var(--content-max-width), calc(100% - (var(--content-padding-desktop) * 2)));
   margin: 0 auto;
-  padding: 0 20px;
 }
 
-/* 공통 버튼 */
-.button {
-  display: inline-block;
-  background: var(--color-main);
-  color: #ffffff;
-  border: none;
-  border-radius: var(--radius);
-  padding: 12px 24px;
-  font-size: 16px;
-  cursor: pointer;
+.page-section {
+  padding: var(--section-padding-y) 0;
 }
 
-.button:hover {
-  opacity: 0.9;
+.page-section-light {
+  background: var(--color-bg-light);
 }
 
-/* 섹션 제목 */
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
+.page-section-light-soft {
+  background: var(--color-bg-light-soft);
+}
+
+.page-section-dark {
+  background: var(--color-bg-dark);
+}
+
+.section-heading-group {
+  max-width: 680px;
+  margin: 0 auto var(--space-14);
   text-align: center;
-  margin-bottom: 32px;
 }
 
-/* 모든 섹션의 위아래 간격 */
-section {
-  padding: var(--section-gap) 0;
+.section-eyebrow {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1.18;
+}
+
+.section-heading-dark {
+  color: var(--color-text-on-dark);
+}
+
+.section-description {
+  margin: var(--space-5) auto 0;
+  color: var(--color-text-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.section-description-dark {
+  color: var(--color-text-on-dark-muted);
+}
+
+/* ============================================================
+   Typography utilities
+   ============================================================ */
+
+.text-card-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.35;
+}
+
+.text-card-body {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.text-card-body-dark {
+  color: var(--color-text-on-dark-muted);
+}
+
+.text-caption {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.text-caption-dark {
+  color: var(--color-text-on-dark-subtle);
+}
+
+/* ============================================================
+   Badge
+   ============================================================ */
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ui-badge-outline {
+  border: 1px solid var(--color-primary-border);
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+
+.ui-card-light {
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.ui-card-light:hover {
+  border-color: rgba(249, 115, 22, 0.35);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-4px);
+}
+
+.ui-card-dark {
+  padding: 32px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-dark);
+  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+}
+
+.ui-card-dark:hover,
+.ui-card-dark.is-active {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-soft-strong);
+  transform: translateY(-4px);
+}
+
+.ui-card-icon {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  font-size: 26px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.button-primary {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.button-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.button-primary:active {
+  transform: scale(0.98);
+}
+
+.button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.button-secondary {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.button-secondary:hover {
+  border-color: rgba(249, 115, 22, 0.35);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.button-secondary-dark {
+  border-color: var(--color-border-dark);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.button-secondary-dark:hover {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   Form controls
+   ============================================================ */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-label {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.form-label-dark {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 13px;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.form-input,
+.form-select {
+  height: 44px;
+  padding: 0 13px;
+}
+
+.form-textarea {
+  min-height: 120px;
+  padding: 12px 13px;
+  resize: vertical;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #aaa39a;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: rgba(249, 115, 22, 0.7);
+}
+
+.form-input-dark,
+.form-textarea-dark,
+.form-select-dark {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.form-input-dark::placeholder,
+.form-textarea-dark::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.form-select-dark option {
+  background: var(--color-bg-dark-soft);
+  color: #fff;
+}
+
+/* ============================================================
+   Accessibility / helpers
+   ============================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 900px) {
+  :root {
+    --section-padding-y: var(--section-padding-y-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-padding-y: var(--section-padding-y-mobile);
+  }
+
+  .page-container {
+    width: min(var(--content-max-width), calc(100% - (var(--content-padding-mobile) * 2)));
+  }
+
+  .section-heading-group {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-description {
+    font-size: 15px;
+  }
+
+  .ui-card-light,
+  .ui-card-dark {
+    padding: 24px;
+  }
 }
