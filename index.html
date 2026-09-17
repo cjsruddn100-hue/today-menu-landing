@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="./css/service.css" />
     <link rel="stylesheet" href="./css/features.css" />
     <!-- C 담당 -->
-    <link rel="stylesheet" href="./css/review.css" />
-    <link rel="stylesheet" href="./css/faq.css" />
+    <link rel="stylesheet" href="./css/update.css" />
+    <link rel="stylesheet" href="./css/event.css" />
   </head>
 
   <body>
@@ -38,15 +38,21 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h1 class="hero-title">오늘 뭐 먹지?<br />고민은 우리가 대신할게요</h1>
+          <h1 class="hero-title">
+            오늘 뭐 먹지?<br />고민은 우리가 대신할게요
+          </h1>
           <p class="hero-desc">
-            메뉴 고르는 시간 아까우셨죠? 버튼 한 번이면 지금 딱 맞는 메뉴를 추천해드려요.
+            메뉴 고르는 시간 아까우셨죠? 버튼 한 번이면 지금 딱 맞는 메뉴를
+            추천해드려요.
           </p>
           <button class="button hero-cta">지금 메뉴 추천받기</button>
         </div>
         <div class="hero-image">
           <!-- TODO(A): 히어로 이미지/일러스트 넣기 -->
-          <img src="https://placehold.co/500x400?text=오늘은+뭐먹지" alt="오늘은 뭐먹지 서비스 이미지" />
+          <img
+            src="https://placehold.co/500x400?text=오늘은+뭐먹지"
+            alt="오늘은 뭐먹지 서비스 이미지"
+          />
         </div>
       </div>
     </section>
@@ -70,124 +76,247 @@
         <div class="features-list">
           <div class="features-card">
             <h3 class="features-card-title">랜덤 추천</h3>
-            <p class="features-card-desc">버튼 한 번으로 오늘의 메뉴를 뽑아드려요.</p>
+            <p class="features-card-desc">
+              버튼 한 번으로 오늘의 메뉴를 뽑아드려요.
+            </p>
           </div>
           <div class="features-card">
             <h3 class="features-card-title">취향 필터</h3>
-            <p class="features-card-desc">한식·양식·매운맛 등 원하는 조건으로 추천.</p>
+            <p class="features-card-desc">
+              한식·양식·매운맛 등 원하는 조건으로 추천.
+            </p>
           </div>
           <div class="features-card">
             <h3 class="features-card-title">최근 메뉴 저장</h3>
-            <p class="features-card-desc">추천받은 메뉴를 기록해 중복을 피해요.</p>
+            <p class="features-card-desc">
+              추천받은 메뉴를 기록해 중복을 피해요.
+            </p>
           </div>
           <!-- TODO(B): 카드 추가/수정 -->
         </div>
       </div>
     </section>
 
-    <!-- ============ REVIEW (담당: C) ============ -->
-    <section id="review" class="review">
-      <div class="container">
-        <h2 class="section-title">사용자 후기</h2>
-        <div class="review-list">
-          <div class="review-card">
-            <p class="review-card-text">"점심마다 하던 고민이 사라졌어요!"</p>
-            <span class="review-card-name">직장인 김OO</span>
-          </div>
-          <div class="review-card">
-            <p class="review-card-text">"메뉴 정하다 싸우던 커플인데 이제 평화로워요."</p>
-            <span class="review-card-name">대학생 이OO</span>
-          </div>
-          <!-- TODO(C): 후기 카드 추가/수정 -->
+    <!-- ============ update (담당: C) ============ -->
+    <section id="update" class="page-section page-section-light-soft">
+      <div class="page-container">
+        <!-- 공통 제목 영역 -->
+        <div class="section-heading-group">
+          <span class="section-eyebrow">NEXT UPDATE</span>
+
+          <h2 class="section-heading">오늘 식사를 조금 더 랜덤하게</h2>
+
+          <p class="section-description">
+            다음 업데이트에는 랜덤 요소의 재미를 살린 엔터테인먼트적 기능이
+            추가될 예정입니다.
+          </p>
+        </div>
+
+        <!-- 업데이트 카드 목록 -->
+        <div class="update-card-list">
+          <!-- 카드 1 -->
+          <article class="ui-card-light update-card">
+            <div class="ui-card-icon"></div>
+
+            <span class="ui-badge">공평한 결정</span>
+
+            <h3 class="text-card-title">메뉴 사다리타기</h3>
+
+            <p class="text-card-body">
+              사다리에 메뉴 후보나 메뉴를 선정할 사람을 넣어 오늘의 메뉴를
+              결정합니다.
+            </p>
+
+            <button type="button" class="button-secondary">미리보기</button>
+          </article>
+
+          <!-- 카드 2 -->
+          <article class="ui-card-light update-card">
+            <div class="ui-card-icon"></div>
+
+            <span class="ui-badge">배틀 초대</span>
+
+            <h3 class="text-card-title">주사위 블랙잭</h3>
+
+            <p class="text-card-body">
+              주사위를 여러 번 굴려 높은 숫자를 가진 사람이 메뉴를 정합니다.
+              링크로 친구에게 승부를 걸어보세요.
+            </p>
+
+            <button type="button" class="button-secondary">미리보기</button>
+          </article>
+
+          <!-- 카드 3 -->
+          <article class="ui-card-light update-card">
+            <div class="ui-card-icon"></div>
+
+            <span class="ui-badge">메뉴 쳐내기</span>
+
+            <h3 class="text-card-title">근처 식당 핀볼</h3>
+
+            <p class="text-card-body">
+              근처 식당 정보를 가져와 최후의 후보 공 하나가 남을 때까지 핀볼을
+              진행합니다.
+            </p>
+
+            <button type="button" class="button-secondary">미리보기</button>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ FAQ (담당: C) ============ -->
-    <section id="event" class="page-section event-section">
+    <!-- ============ event - 베타 이벤트 (담당: C) ============ -->
+    <section id="event" class="page-section page-section-dark">
       <div class="page-container">
         <div class="section-heading-group">
           <span class="section-eyebrow">BETA EVENT!</span>
-    
-          <h2 class="section-heading">
+
+          <h2 class="section-heading section-heading-dark">
             무료로 사용하시고<br />
             솔직한 후기를 남겨주세요.
           </h2>
-    
-          <p class="section-description">
-            지금 이 링크를 통해 베타 서비스에 참여하면,
-            정식 출시 후 3개월 프리미엄 무료 이용권을 드립니다.
+
+          <p class="section-description section-description-dark">
+            지금 이 링크를 통해 베타 서비스에 참여하면, 정식 출시 후 3개월
+            프리미엄 무료 이용권을 드립니다.
           </p>
         </div>
-    
+
         <div class="event-step-list">
           <article class="event-step-card">
             <div class="event-step-top">
               <div class="event-step-icon"></div>
               <span class="event-step-number">STEP 01</span>
             </div>
-    
+
             <h3 class="event-step-title">베타 신청 등록</h3>
-    
+
             <p class="event-step-description">
-              이 페이지의 베타 전용 링크를 통해 간단하게 신청해 주세요.
-              결제 정보 없이 참여할 수 있습니다.
+              이 페이지의 베타 전용 링크를 통해 간단하게 신청해 주세요. 결제
+              정보 없이 참여할 수 있습니다.
             </p>
-    
+
             <span class="ui-badge">이 링크로만 가능</span>
           </article>
-    
+
           <article class="event-step-card">
             <div class="event-step-top">
               <div class="event-step-icon"></div>
               <span class="event-step-number">STEP 02</span>
             </div>
-    
-            <h3 class="event-step-title">
-              출시 전까지 자유롭게 이용
-            </h3>
-    
+
+            <h3 class="event-step-title">출시 전까지 자유롭게 이용</h3>
+
             <p class="event-step-description">
-              내 주변 맛집 찾기, 랜덤 메뉴 선정,
-              최적의 회식 장소 찾기 기능을 제한 없이 이용하세요.
+              내 주변 맛집 찾기, 랜덤 메뉴 선정, 최적의 회식 장소 찾기 기능을
+              제한 없이 이용하세요.
             </p>
-    
+
             <span class="ui-badge">모든 기능 이용</span>
           </article>
-    
+
           <article class="event-step-card">
             <div class="event-step-top">
               <div class="event-step-icon"></div>
               <span class="event-step-number">STEP 03</span>
             </div>
-    
-            <h3 class="event-step-title">
-              솔직한 후기 &amp; 피드백 작성
-            </h3>
-    
+
+            <h3 class="event-step-title">솔직한 후기 &amp; 피드백 작성</h3>
+
             <p class="event-step-description">
-              사용 경험을 솔직하게 남겨주세요.
-              좋았던 점과 불편했던 점 모두 서비스 개선에 활용됩니다.
+              사용 경험을 솔직하게 남겨주세요. 좋았던 점과 불편했던 점 모두
+              서비스 개선에 활용됩니다.
             </p>
-    
+
             <span class="ui-badge">약 5분 소요</span>
           </article>
-    
+
           <article class="event-step-card">
             <div class="event-step-top">
               <div class="event-step-icon"></div>
               <span class="event-step-number">STEP 04</span>
             </div>
-    
+
             <h3 class="event-step-title">혜택 증정</h3>
-    
+
             <p class="event-step-description">
-              후기 작성자를 대상으로 이벤트 혜택을 안내합니다.
-              자세한 선정 기준과 지급 방식은 운영 정책 확정 후 공지됩니다.
+              후기 작성자를 대상으로 이벤트 혜택을 안내합니다. 자세한 선정
+              기준과 지급 방식은 운영 정책 확정 후 공지됩니다.
             </p>
-    
+
             <span class="ui-badge">이벤트 혜택 안내</span>
           </article>
+        </div>
+        <!-- ============ event - 혜택 배너 ============ -->
+        <div class="event-benefit-banner">
+          <div class="event-benefit-content">
+            <h3 class="event-benefit-heading">베타 참여자 전용 혜택</h3>
+
+            <p class="event-benefit-description">
+              베타기간 전 기능을 무료로 사용해 보세요!<br />
+              여기 링크로 체험 시 정식 출시 후 3개월 프리미엄 무료 이용권을
+              드립니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- ============ event - 베타 신청 링크  ============ -->
+        <div class="event-cta-card">
+          <div class="event-cta-content"></div>
+
+          <a href="#" class="button button-primary">지금 베타 참여</a>
+        </div>
+
+        <!-- ============ event - 후기 폼 (담당: C) ============ -->
+        <div class="event-feedback-form">
+          <br />
+          <br />
+          <span class="ui-badge ui-badge-primary">스타벅스 쿠폰 이벤트!</span>
+          <h3 class="event-feedback-heading">솔직한 후기를 남겨주세요</h3>
+
+          <p class="event-feedback-description">
+            좋았던 점과 불편했던 점 모두 서비스 개선에 활용됩니다.
+          </p>
+
+          <form class="feedback-form">
+            <div class="form-group">
+              <label for="feedback-name" class="form-label">이름 (선택)</label>
+              <input
+                type="text"
+                id="feedback-name"
+                class="form-input"
+                placeholder="홍길동"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="feedback-email" class="form-label"
+                >이메일 (선택)</label
+              >
+              <input
+                type="email"
+                id="feedback-email"
+                class="form-input"
+                placeholder="example@email.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="feedback-message" class="form-label"
+                >후기 &amp; 피드백</label
+              >
+              <textarea
+                id="feedback-message"
+                class="form-textarea"
+                rows="4"
+                placeholder="출시가 된다면 사용할 의향이 있는지, 어떤 기능이 아쉬운지 솔직한 리뷰를 부탁드립니다."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="button button-primary">
+              후기 보내기
+            </button>
+          </form>
         </div>
       </div>
     </section>

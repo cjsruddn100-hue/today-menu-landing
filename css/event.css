@@ -1,0 +1,254 @@
+/* ============================================================
+   C PART | Event - dark theme
+   ============================================================ */
+
+/* Event 섹션은 page-section-dark를 사용하므로
+   배경은 공통 CSS의 --color-bg-dark를 그대로 사용합니다. */
+
+/* 4개의 Step 카드를 가로로 정렬 */
+.event-step-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+/* Event 카드 */
+.event-step-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-dark);
+  transition:
+    transform var(--transition-base),
+    background var(--transition-base),
+    border-color var(--transition-base);
+}
+
+/* 카드 위에 마우스를 올렸을 때 */
+.event-step-card:hover {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-soft);
+  transform: translateY(-4px);
+}
+
+/* 아이콘과 STEP 번호를 가로로 배치 */
+.event-step-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* 각 단계 아이콘 박스 */
+.event-step-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  font-size: 20px;
+}
+
+/* STEP 01 같은 작은 번호 */
+.event-step-number {
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+/* 카드 제목 */
+.event-step-title {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+}
+
+/* 카드 설명 */
+.event-step-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 배지는 각 카드의 맨 아래에 놓기 */
+.event-step-card .ui-badge {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* 태블릿: 4개 카드 → 2열 */
+@media (max-width: 900px) {
+  .event-step-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 모바일: 2열 → 1열 */
+@media (max-width: 640px) {
+  .event-step-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 혜택 배너 ---------- */
+
+.event-benefit-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-dark);
+}
+
+.event-benefit-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.event-benefit-heading {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.event-benefit-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ---------- 베타 참여 카드 (CTA) ---------- */
+
+.event-cta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-soft) 0%,
+    var(--color-surface-dark) 100%
+  );
+}
+
+.event-cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.event-cta-heading {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.event-cta-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ---------- 후기 폼 ---------- */
+
+.event-feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-dark);
+}
+
+.event-feedback-heading {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.event-feedback-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 폼 그룹 */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* 폼 라벨 */
+.form-label {
+  color: var(--color-text-on-dark);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 입력 필드 공통 */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color var(--transition-base);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-on-dark-muted);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-border);
+}
+
+/* 텍스트 영역 */
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* 모바일에서 배너, CTA 카드 세로로 */
+@media (max-width: 640px) {
+  .event-benefit-banner,
+  .event-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
