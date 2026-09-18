@@ -97,7 +97,9 @@
       </div>
     </section>
 
-    <!-- ============ update (담당: C) ============ -->
+    
+      </div>
+      <!-- ============ update (담당: C) ============ -->
     <section id="update" class="page-section page-section-light-soft">
       <div class="page-container">
         <!-- 공통 제목 영역 -->
@@ -126,8 +128,13 @@
               사다리에 메뉴 후보나 메뉴를 선정할 사람을 넣어 오늘의 메뉴를
               결정합니다.
             </p>
-
-            <button type="button" class="button-secondary">미리보기</button>
+            <button
+            type="button"
+            class="button-secondary update-preview-button"
+            data-preview="ladder"
+          >
+            미리보기
+          </button>
           </article>
 
           <!-- 카드 2 -->
@@ -143,8 +150,14 @@
               링크로 친구에게 승부를 걸어보세요.
             </p>
 
-            <button type="button" class="button-secondary">미리보기</button>
-          </article>
+            <button
+    type="button"
+    class="button-secondary update-preview-button"
+    data-preview="dice"
+  >
+    미리보기
+  </button>
+</article>
 
           <!-- 카드 3 -->
           <article class="ui-card-light update-card">
@@ -159,10 +172,70 @@
               진행합니다.
             </p>
 
-            <button type="button" class="button-secondary">미리보기</button>
+            <button
+    type="button"
+    class="button-secondary update-preview-button"
+    data-preview="pinball"
+  >
+    미리보기
+  </button>
           </article>
         </div>
-      </div>
+              <!-- ============ update - 기능 미리보기 안내 ============ -->
+              <div
+              id="update-preview"
+              class="update-preview-panel"
+              aria-hidden="true"
+            >
+              <div class="update-preview-header">
+                <span class="ui-badge ui-badge-primary">
+                  COMING SOON
+                </span>
+            
+                <h3 class="update-preview-heading">
+                  랜덤 메뉴 기능을 준비하고 있어요
+                </h3>
+              </div>
+            
+              <p class="update-preview-description">
+                미리보기 버튼을 누르면 기능 설명이 표시됩니다.
+              </p>
+            
+              <div class="update-preview-content">
+                <div
+                  class="update-preview-detail"
+                  data-preview-content="ladder"
+                >
+                  <h4>메뉴 사다리타기</h4>
+                  <p>
+                    메뉴 후보를 입력하고 사다리를 따라가
+                    오늘의 메뉴를 랜덤으로 결정하는 기능입니다.
+                  </p>
+                </div>
+            
+                <div
+                  class="update-preview-detail"
+                  data-preview-content="dice"
+                >
+                  <h4>주사위 블랙잭</h4>
+                  <p>
+                    친구와 주사위를 굴려 더 높은 숫자를 얻은 사람이
+                    메뉴를 선택하는 기능입니다.
+                  </p>
+                </div>
+            
+                <div
+                  class="update-preview-detail"
+                  data-preview-content="pinball"
+                >
+                  <h4>근처 식당 핀볼</h4>
+                  <p>
+                    주변 식당 후보를 하나씩 줄여
+                    마지막 식당을 선택하는 기능입니다.
+                  </p>
+                </div>
+              </div>
+            </div>
     </section>
 
     <!-- ============ event - 베타 이벤트 (담당: C) ============ -->
@@ -192,8 +265,7 @@
             <h3 class="event-step-title">베타 신청 등록</h3>
 
             <p class="event-step-description">
-              이 페이지의 베타 전용 링크를 통해 간단하게 신청해 주세요. 결제
-              정보 없이 참여할 수 있습니다.
+              이 페이지의 베타 전용 링크를 통해 곧바로 서비스를 이용해 보세요.
             </p>
 
             <span class="ui-badge">이 링크로만 가능</span>
@@ -328,5 +400,6 @@
         <p class="footer-copy">© 2026 오늘은 뭐먹지 팀. All rights reserved.</p>
       </div>
     </footer>
+    <script src="./js/update-preview.js"></script>
   </body>
 </html>
