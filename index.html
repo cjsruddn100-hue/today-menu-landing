@@ -196,26 +196,6 @@
             </a>
           </article>
 
-          <!-- 실제 동작하는 데모 — 카카오맵 API -->
-          <article class="ui-card-light features-card features-map-card">
-            <div class="ui-card-icon">📍</div>
-            <span class="ui-badge ui-badge-outline">화면 예시</span>
-            <h3 class="text-card-title">내 주변에서 바로 뽑기</h3>
-            <p class="text-card-body">
-              지금 있는 위치에서 걸어서 갈 수 있는 거리만 찾습니다. 버튼을
-              누르면 근처 음식점 중 딱 한 곳만 뽑아서 지도에 찍어드려요.
-            </p>
-
-            <img
-              class="features-map-image"
-              src="./assets/features-map-sample.svg"
-              alt="현재 위치 반경 안에서 추천된 가게가 지도에 표시된 예시 화면"
-            />
-
-            <p class="text-caption features-map-caption">
-              실제 화면 예시 — 반경 안에서 딱 한 곳만 골라 표시합니다.
-            </p>
-          </article>
         </div>
 
         <!-- 5막: 우리 컨셉과 장점 -->
@@ -260,8 +240,77 @@
       </div>
     </section>
 
+    <!-- ============ LOCATION SERVICE (담당: B) ============ -->
+    <section id="location" class="page-section page-section-light">
+      <div class="page-container">
+        <div class="section-heading-group">
+          <span class="section-eyebrow">LOCATION BASED</span>
+          <h2 class="section-heading">
+            지금 서 있는 자리에서<br />
+            <b class="location-accent">걸어갈 수 있는 곳만 고릅니다</b>
+          </h2>
+          <p class="section-description">
+            메뉴를 정하는 게 어려운 진짜 이유는 선택지가 많아서가 아니라,
+            &ldquo;지금 여기서 갈 수 있는 곳&rdquo;이 어디인지 몰라서입니다.
+            그래서 저희는 위치를 기준으로 답을 좁힙니다.
+          </p>
+        </div>
+
+        <div class="location-showcase">
+          <figure class="location-figure">
+            <img
+              class="location-image"
+              src="./assets/features-map-sample.svg"
+              alt="현재 위치를 중심으로 도보 거리 안에서 추천된 가게 한 곳이 지도에 표시된 예시 화면"
+            />
+            <figcaption class="text-caption location-caption">
+              실제 화면 예시 — 파란 점이 지금 내 위치, 주황 원이 걸어갈 수
+              있는 범위, 마커가 오늘의 추천 한 곳입니다.
+            </figcaption>
+          </figure>
+
+          <div class="location-points">
+            <article class="location-point">
+              <span class="ui-badge">고민 1</span>
+              <h3 class="text-card-title">&ldquo;멀면 어차피 못 가는데&rdquo;</h3>
+              <p class="text-card-body">
+                점심시간은 한 시간뿐입니다. 아무리 좋은 집이어도 왕복 40분이면
+                후보가 될 수 없어요. 그래서 반경 안, 걸어서 다녀올 수 있는
+                거리만 후보로 둡니다. 추천받고 시간을 계산할 필요가 없습니다.
+              </p>
+            </article>
+
+            <article class="location-point">
+              <span class="ui-badge">고민 2</span>
+              <h3 class="text-card-title">&ldquo;검색해도 진짜인지 모르겠어&rdquo;</h3>
+              <p class="text-card-body">
+                블로그 상위 노출은 대부분 광고입니다. 저희는 순위를 매기지
+                않고 지금 내 위치를 기준으로 실제 영업 중인 가게를 불러옵니다.
+                순위가 아니라 거리와 지금이라는 기준으로 좁힙니다.
+              </p>
+            </article>
+
+            <article class="location-point">
+              <span class="ui-badge">고민 3</span>
+              <h3 class="text-card-title">&ldquo;결국 또 정해야 하잖아&rdquo;</h3>
+              <p class="text-card-body">
+                목록을 열 개 보여주면 고민은 다시 시작됩니다. 그래서 좁힌
+                후보 중에서 딱 한 곳만 지도에 찍어드립니다. 화면에 남는 건
+                가게 하나, 거리 하나, 그리고 단톡방에 넘길 링크 하나입니다.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <p class="location-closing">
+          위치를 알면 <b class="location-accent">고민할 거리 자체가 줄어듭니다.</b><br />
+          그게 저희가 위치 기반을 고른 이유입니다.
+        </p>
+      </div>
+    </section>
+
     <!-- ============ HOW IT WORKS (담당: B) ============ -->
-    <section id="how-it-works" class="page-section page-section-light">
+    <section id="how-it-works" class="page-section page-section-light-soft">
       <div class="page-container">
         <div class="section-heading-group">
           <span class="section-eyebrow">HOW IT WORKS</span>
@@ -323,9 +372,8 @@
       </div>
     </section>
 
-    
-      </div>
-      <!-- ============ update (담당: C) ============ -->
+
+    <!-- ============ update (담당: C) ============ -->
     <section id="update" class="page-section page-section-light-soft">
       <div class="page-container">
         <!-- 공통 제목 영역 -->
@@ -462,6 +510,7 @@
                 </div>
               </div>
             </div>
+      </div>
     </section>
 
     <!-- ============ event - 베타 이벤트 (담당: C) ============ -->
