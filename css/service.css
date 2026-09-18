@@ -1,14 +1,132 @@
 /* =========================================================
    service.css  ―  서비스 소개 (담당: B)
-   · 이 파일에는 "service-" 로 시작하는 class만 작성하세요.
-   · 공통 값(색/너비/간격)은 common.css의 변수(var(--...))를 사용하세요.
-   · 다른 사람 담당 영역의 class/CSS는 임의로 바꾸지 않습니다.
+   · 흐름: 고민 → 문제 제기 → 공감 전환 → (Features로 연결)
+   · 카드·배지는 공통 ui-card-light / ui-badge 재사용, 배치만 여기서
    ========================================================= */
 
-/* 예시)
-.service-inner {
-  padding: 20px 0;
+/* --- 문제 카드 4개 --- */
+.service-pain-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5, 24px);
+  margin-top: var(--space-8, 40px);
 }
-*/
 
-/* TODO(B): 여기에 서비스 소개 스타일을 작성하세요. */
+.service-pain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  align-items: flex-start;
+}
+
+/* --- 공감 전환 라인 --- */
+.service-turn {
+  margin-top: var(--space-10, 56px);
+  text-align: center;
+}
+
+.service-turn-lead {
+  margin: 0 0 var(--space-3, 12px);
+  color: var(--color-text-muted, #6b6557);
+  font-size: 15px;
+}
+
+.service-turn-line {
+  margin: 0;
+  font-size: clamp(22px, 3.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.service-turn-accent {
+  color: var(--color-primary, #f97316);
+  font-style: normal;
+}
+
+/* --- 숫자 대비 --- */
+.service-compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4, 16px);
+  margin-top: var(--space-8, 40px);
+  text-align: center;
+}
+
+.service-compare-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2, 8px);
+}
+
+.service-compare-num {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.service-compare-num-good {
+  color: var(--color-primary, #f97316);
+}
+
+.service-compare-item-good {
+  border-color: var(--color-primary-border, rgba(249, 115, 22, 0.3));
+}
+
+@media (max-width: 768px) {
+  .service-pain-list,
+  .service-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-compare-lead {
+  margin: var(--space-8, 40px) 0 var(--space-4, 16px);
+  text-align: center;
+  color: var(--color-text-muted, #6b6557);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.service-compare {
+  margin-top: 0;
+}
+
+/* ── 0막: 부러움 컷 ──────────────────────────────────────── */
+.service-envy {
+  max-width: 720px;
+  margin: 0 auto var(--space-16, 64px);
+  padding-bottom: var(--space-12, 48px);
+  border-bottom: 1px solid var(--color-border, #e8e3da);
+  text-align: center;
+}
+
+.service-envy-lead {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.service-envy-line {
+  margin: var(--space-3, 12px) 0 0;
+  font-size: clamp(1.5rem, 3.6vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--color-text, #130f09);
+}
+
+.service-envy-accent {
+  color: var(--color-primary, #f97316);
+}
+
+.service-envy-desc {
+  margin: var(--space-4, 16px) auto 0;
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted, #6b6557);
+}
+
