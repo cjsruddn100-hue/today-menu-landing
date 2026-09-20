@@ -1,19 +1,26 @@
 /* =========================================================
    location-pick.js  ―  위치 기반 랜덤 추천 (발표용, 담당: B)
 
-   · 키 없이 동작합니다. 가게 정보는 data/stores.js 에서 읽습니다.
-   · 지도 위 핀이나 목록을 클릭하면 페이지 안에서 가게 정보가 열립니다.
+   · 가게 정보는 data/stores.js 에서 읽습니다. (비밀 키 없음)
+   · 네이버 지도 Client ID가 있으면 실제 지도 위에 핀을 찍고,
+     없거나 인증에 실패하면 그림 지도로 자동 전환합니다.
+   · 핀이나 목록을 클릭하면 페이지 안에서 가게 정보가 열립니다.
    · "뽑아보기"는 최근 5일간 간 곳을 빼고 딱 한 곳을 골라 보여줍니다.
    ========================================================= */
 
 (function () {
   const STORES = window.STORE_DATA || [];
+  const CONFIG = window.LOCATION_CONFIG || {};
+  const CENTER = CONFIG.CENTER || { lat: 37.497942, lng: 127.027621 };
+  const RADIUS = CONFIG.RADIUS || 500;
   const EXCLUDE_DAYS = 5;
   const HISTORY_KEY = "todaymenu_visit_history";
   const WALK_M_PER_MIN = 70; // 도보 1분 ≈ 70m
 
   // ── 화면 요소 ─────────────────────────────────────────
   const pinLayer = document.querySelector(".location-pins");
+  const naverBox = document.querySelector(".location-naver-map");
+  const imageBox = document.querySelector(".location-image");
   const listBox = document.querySelector(".location-list");
   const detailBox = document.querySelector(".location-detail");
   const pickButton = document.querySelector(".location-pick-button");
@@ -120,11 +127,109 @@
     highlight(null);
   }
 
+  // ── 네이버 지도 (Client ID가 있을 때만) ──────────────
+  let naverMap = null;
+  const naverMarkers = {};
+
+  function markerHtml(number, active) {
+    return `<span class="location-naver-pin${active ? " is-active" : ""}">${number}</span>`;
+  }
+
+  // 인증 실패 시 네이버가 호출하는 함수 → 그림 지도로 되돌리기
+  window.navermap_authFailure = function () {
+    console.warn("[위치 추천] 네이버 지도 인증 실패 → 그림 지도로 전환");
+    useImageMap();
+  };
+
+  function useImageMap() {
+    if (naverBox) naverBox.hidden = true;
+    if (imageBox) imageBox.hidden = false;
+    pinLayer.hidden = false;
+  }
+
+  function loadNaverMap() {
+    return new Promise((resolve, reject) => {
+      if (!CONFIG.NAVER_MAP_CLIENT_ID || !naverBox) {
+        reject(new Error("NO_ID"));
+        return;
+      }
+      const script = document.createElement("script");
+      script.src =
+        "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=" +
+        encodeURIComponent(CONFIG.NAVER_MAP_CLIENT_ID);
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("LOAD_FAIL"));
+      document.head.appendChild(script);
+    });
+  }
+
+  function drawNaverMap() {
+    const center = new naver.maps.LatLng(CENTER.lat, CENTER.lng);
+    naverMap = new naver.maps.Map(naverBox, { center, zoom: 16 });
+
+    // 걸어갈 수 있는 반경
+    new naver.maps.Circle({
+      map: naverMap,
+      center,
+      radius: RADIUS,
+      fillColor: "#f97316",
+      fillOpacity: 0.08,
+      strokeColor: "#f97316",
+      strokeOpacity: 0.5,
+      strokeStyle: "shortdash",
+    });
+
+    // 내 위치
+    new naver.maps.Marker({
+      map: naverMap,
+      position: center,
+      icon: {
+        content: '<span class="location-naver-me"></span>',
+        anchor: new naver.maps.Point(9, 9),
+      },
+    });
+
+    // 가게 5곳
+    STORES.forEach((store, index) => {
+      const marker = new naver.maps.Marker({
+        map: naverMap,
+        position: new naver.maps.LatLng(store.lat, store.lng),
+        title: store.name,
+        icon: {
+          content: markerHtml(index + 1, false),
+          anchor: new naver.maps.Point(15, 15),
+        },
+      });
+      naver.maps.Event.addListener(marker, "click", () => openDetail(store));
+      naverMarkers[store.id] = { marker, number: index + 1 };
+    });
+
+    naverBox.hidden = false;
+    if (imageBox) imageBox.hidden = true;
+    pinLayer.hidden = true;
+  }
+
+  function highlightNaver(id) {
+    Object.keys(naverMarkers).forEach((key) => {
+      const { marker, number } = naverMarkers[key];
+      marker.setIcon({
+        content: markerHtml(number, key === id),
+        anchor: new naver.maps.Point(15, 15),
+      });
+      marker.setZIndex(key === id ? 100 : 1);
+    });
+    if (id && naverMap) {
+      const store = STORES.find((s) => s.id === id);
+      if (store) naverMap.panTo(new naver.maps.LatLng(store.lat, store.lng));
+    }
+  }
+
   // 선택한 가게의 핀·목록만 강조
   function highlight(id) {
     document
       .querySelectorAll(".location-pin, .location-list-item")
       .forEach((el) => el.classList.toggle("is-active", el.dataset.id === id));
+    if (naverMap) highlightNaver(id);
   }
 
   // ── 뽑기: 최근 간 곳 빼고 딱 한 곳 ────────────────────
@@ -156,6 +261,9 @@
   }
 
   render();
+  loadNaverMap()
+    .then(drawNaverMap)
+    .catch(() => useImageMap());
   if (pickButton) pickButton.addEventListener("click", handlePick);
   if (resetButton) resetButton.addEventListener("click", handleReset);
 })();
