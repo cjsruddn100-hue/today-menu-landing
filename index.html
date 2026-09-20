@@ -164,7 +164,7 @@
         </div>
 
         <div class="features-card-list">
-          <!-- TODO(B): 기능 카드는 우선 1개만 — 이후 추가 예정 -->
+          <!-- 기능 1: 랜덤 추천 -->
           <article class="ui-card-light features-card">
             <div class="ui-card-icon">🎲</div>
             <span class="ui-badge">핵심 기능</span>
@@ -196,6 +196,37 @@
             </a>
           </article>
 
+          <!-- 기능 2: 최근 메뉴 저장 -->
+          <article class="ui-card-light features-card">
+            <div class="ui-card-icon">🗓️</div>
+            <span class="ui-badge">자동 기억</span>
+            <h3 class="text-card-title">어제 먹은 건 빼고</h3>
+            <p class="text-card-body">
+              뽑힌 가게는 자동으로 기록돼요. 다음 추천부터는 최근에 간 곳을
+              빼고 골라서, 같은 집이 연달아 나오지 않습니다.
+            </p>
+
+            <dl class="features-solve">
+              <div class="features-solve-row">
+                <dt class="features-solve-label">이런 게 불편했다면</dt>
+                <dd class="features-solve-text">
+                  새로 생긴 가게가 궁금한데도 실패가 무서워서, 결국 이번 주에만
+                  세 번째 같은 집에 갔다면
+                </dd>
+              </div>
+              <div class="features-solve-row features-solve-row-good">
+                <dt class="features-solve-label">이렇게 해소됩니다</dt>
+                <dd class="features-solve-text">
+                  최근 5일간 간 곳은 후보에서 자동 제외. 따로 적어둘 필요 없이
+                  매일 다른 집으로 안내합니다.
+                </dd>
+              </div>
+            </dl>
+
+            <p class="text-caption features-card-caption">
+              기록은 내 기기에만 저장되고, 언제든 지울 수 있어요.
+            </p>
+          </article>
         </div>
 
         <!-- 5막: 우리 컨셉과 장점 -->
@@ -258,14 +289,36 @@
 
         <div class="location-showcase">
           <figure class="location-figure">
-            <img
-              class="location-image"
-              src="./assets/features-map-sample.svg"
-              alt="현재 위치를 중심으로 도보 거리 안에서 추천된 가게 한 곳이 지도에 표시된 예시 화면"
-            />
+            <!-- 지도 이미지 + 클릭하면 정보가 열리는 핀 -->
+            <div class="location-stage">
+              <img
+                class="location-image"
+                src="./assets/location-map-base.svg"
+                alt="내 위치를 중심으로 걸어갈 수 있는 반경을 표시한 지도"
+              />
+              <div class="location-pins"></div>
+            </div>
+
+            <div class="location-controls">
+              <button class="button-primary location-pick-button" type="button">
+                지금 근처에서 뽑아보기 🎲
+              </button>
+              <button class="location-reset-button" type="button">
+                방문 기록 지우기
+              </button>
+            </div>
+
+            <p class="text-caption location-status" aria-live="polite">
+              핀이나 가게 이름을 누르면 정보가 열려요.
+            </p>
+
+            <div class="location-detail" hidden></div>
+
+            <ol class="location-list"></ol>
+
             <figcaption class="text-caption location-caption">
-              실제 화면 예시 — 파란 점이 지금 내 위치, 주황 원이 걸어갈 수
-              있는 범위, 마커가 오늘의 추천 한 곳입니다.
+              발표용 임시 데이터 5곳 · 실제 서비스에서는 공공데이터포털
+              「소상공인시장진흥공단_상가(상권)정보」로 채웁니다.
             </figcaption>
           </figure>
 
@@ -307,6 +360,9 @@
           그게 저희가 위치 기반을 고른 이유입니다.
         </p>
       </div>
+
+      <script src="./data/stores.js"></script>
+      <script src="./js/location-pick.js" defer></script>
     </section>
 
     <!-- ============ HOW IT WORKS (담당: B) ============ -->
