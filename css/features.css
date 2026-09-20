@@ -592,3 +592,49 @@
   font-size: 0.75rem;
   cursor: pointer;
 }
+
+/* ── 네이버 지도 모드 ───────────────────────────────────── */
+.location-naver-map {
+  width: 100%;
+  aspect-ratio: 12 / 7;
+  border: 1px solid var(--color-border, #e8e3da);
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+}
+
+.location-naver-map[hidden],
+.location-image[hidden],
+.location-pins[hidden] {
+  display: none;
+}
+
+.location-naver-pin {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--color-primary, #f97316);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.location-naver-pin.is-active {
+  background: var(--color-primary-dark, #ea6000);
+  transform: scale(1.25);
+  box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.3);
+}
+
+.location-naver-me {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.2);
+}
