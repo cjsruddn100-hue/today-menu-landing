@@ -291,6 +291,10 @@
           <figure class="location-figure">
             <!-- 지도 이미지 + 클릭하면 정보가 열리는 핀 -->
             <div class="location-stage">
+              <!-- 네이버 지도 (Client ID가 있을 때 표시) -->
+              <div class="location-naver-map" hidden></div>
+
+              <!-- 네이버 지도를 못 쓸 때 보이는 그림 지도 -->
               <img
                 class="location-image"
                 src="./assets/location-map-base.svg"
@@ -317,8 +321,8 @@
             <ol class="location-list"></ol>
 
             <figcaption class="text-caption location-caption">
-              발표용 임시 데이터 5곳 · 실제 서비스에서는 공공데이터포털
-              「소상공인시장진흥공단_상가(상권)정보」로 채웁니다.
+              지도: 네이버 지도 API · 가게: 발표용 임시 데이터 5곳 (실제 가게 아님) ·
+              실제 서비스에서는 공공데이터포털 「소상공인시장진흥공단_상가(상권)정보」로 채웁니다.
             </figcaption>
           </figure>
 
@@ -361,6 +365,9 @@
         </p>
       </div>
 
+      <!-- 로컬 전용 키 파일 (레포에 없음, 없으면 그림 지도로 동작) -->
+      <script src="./js/location-keys.local.js"></script>
+      <script src="./js/location-config.js"></script>
       <script src="./data/stores.js"></script>
       <script src="./js/location-pick.js" defer></script>
     </section>
