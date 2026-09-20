@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오늘은 뭐먹지 - 오늘 뭐 먹을지 골라주는 음식 추천 서비스</title>
+    <meta
+      name="description"
+      content="오늘의 메뉴 고민을 덜어주는 위치 기반 메뉴 추천 서비스, 오늘은 뭐먹지 베타에 참여해보세요."
+    />
+    <title>오늘은 뭐먹지 | 오늘 점심, 딱 한 곳만 고를게요</title>
 
     <!-- 공통 스타일 (모두 같이 씀 / 임의 변경 금지) -->
     <link rel="stylesheet" href="./css/common.css" />
@@ -19,40 +23,79 @@
     <link rel="stylesheet" href="./css/event.css" />
   </head>
 
-  <body>
+  <body id="top">
     <!-- ============ HEADER (담당: A) ============ -->
-    <header class="header">
-      <div class="container header-inner">
-        <a href="#" class="header-logo">오늘은 뭐먹지</a>
-        <nav class="header-nav">
+    <header class="header" data-site-header>
+      <div class="page-container header-inner">
+        <a
+          href="#top"
+          class="header-logo"
+          aria-label="오늘은 뭐먹지 첫 화면으로 이동"
+        >
+          오늘은 뭐먹지
+        </a>
+        <button
+          class="button-secondary header-menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span class="header-menu-button-label">메뉴</span>
+          <span class="header-menu-button-icon" aria-hidden="true"></span>
+        </button>
+        <nav class="header-nav" id="primary-navigation" aria-label="주요 메뉴">
           <a href="#service" class="header-link">서비스 소개</a>
-          <a href="#features" class="header-link">주요 기능</a>
-          <a href="#review" class="header-link">후기</a>
-          <a href="#faq" class="header-link">FAQ</a>
+          <a href="#features" class="header-link">추천 방식</a>
+          <a href="#update" class="header-link">다음 기능</a>
+          <a href="#event" class="header-link">이벤트 참여</a>
         </nav>
-        <button class="button header-cta">시작하기</button>
+        <a class="button-primary header-cta" href="#event"
+          >3개월 프리미엄 무료로 시작하기</a
+        >
       </div>
     </header>
 
     <!-- ============ HERO (담당: A) ============ -->
-    <section class="hero">
-      <div class="container hero-inner">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="page-container hero-inner">
         <div class="hero-text">
-          <h1 class="hero-title">
-            오늘 뭐 먹지?<br />고민은 우리가 대신할게요
+          <p class="hero-eyebrow">
+            BETA OPEN · 메뉴 회의 없는 점심시간을 만드는 중
+          </p>
+          <h1 class="hero-title" id="hero-title">
+            오늘 메뉴,<br /><span>클릭 한번으로 끝.</span>
           </h1>
           <p class="hero-desc">
-            메뉴 고르는 시간 아까우셨죠? 버튼 한 번이면 지금 딱 맞는 메뉴를
-            추천해드려요.
+            점심시간은 짧고, 의견은 많죠. 모두가 망설이는 순간 오늘은 뭐먹지가
+            첫 선택지를 던져드릴게요.
           </p>
-          <button class="button hero-cta">지금 메뉴 추천받기</button>
+          <div class="hero-actions">
+            <a class="button-primary hero-cta" href="#event"
+              >3개월 프리미엄 무료로 시작하기</a
+            >
+          </div>
+          <p class="hero-note">필요한 의견만, 목적을 안내한 뒤 수집합니다.</p>
         </div>
-        <div class="hero-image">
-          <!-- TODO(A): 히어로 이미지/일러스트 넣기 -->
-          <img
-            src="https://placehold.co/500x400?text=오늘은+뭐먹지"
-            alt="오늘은 뭐먹지 서비스 이미지"
-          />
+        <div class="hero-picker" aria-label="랜덤 메뉴 뽑기">
+          <p class="hero-picker-eyebrow">TODAY'S RANDOM MENU</p>
+          <p class="hero-picker-question">오늘은 이 메뉴 어때요?</p>
+          <output class="hero-picker-result" data-menu-result aria-live="polite"
+            >순두부찌개</output
+          >
+          <p class="hero-picker-description">
+            마음에 들지 않으면, 다시 한 번 뽑아보세요.
+          </p>
+          <button
+            class="button-primary hero-picker-button"
+            type="button"
+            data-menu-spin
+          >
+            <span data-menu-button-label>메뉴 뽑기</span>
+            <span aria-hidden="true">↻</span>
+          </button>
+          <p class="hero-picker-note">
+            랜덤 메뉴 뽑기는 우리 서비스의 간단 체험입니다.
+          </p>
         </div>
       </div>
     </section>
@@ -731,13 +774,46 @@
       </div>
     </section>
 
+    <!-- ============ 전역 CTA (담당: A) ============ -->
+    <aside
+      class="header-sticky-cta"
+      data-sticky-cta
+      hidden
+      aria-label="베타 참여 안내"
+    >
+      <div class="header-sticky-cta-inner page-container">
+        <p class="header-sticky-cta-copy">
+          베타로 먼저 써보고, 의견을 남겨주세요.
+        </p>
+        <a class="button-primary header-sticky-cta-button" href="#event"
+          >3개월 프리미엄 무료로 시작하기 <span aria-hidden="true">→</span></a
+        >
+      </div>
+    </aside>
+
     <!-- ============ FOOTER (담당: A) ============ -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p class="footer-logo">오늘은 뭐먹지</p>
-        <p class="footer-copy">© 2026 오늘은 뭐먹지 팀. All rights reserved.</p>
+    <footer class="footer" id="footer">
+      <div class="page-container footer-inner">
+        <div>
+          <a class="footer-logo" href="#top">오늘은 뭐먹지</a>
+          <p class="footer-description">
+            오늘의 한 끼를 시작부터 최고의 한끼로.
+          </p>
+          <a class="button-primary footer-cta" href="#event"
+            >3개월 프리미엄 무료로 시작하기 <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <nav class="footer-links" aria-label="푸터 메뉴">
+          <a href="#service" class="footer-link">서비스 소개</a>
+          <a href="#event" class="footer-link">이벤트 참여</a>
+          <a href="#top" class="footer-link">맨 위로 ↑</a>
+        </nav>
+        <p class="footer-copy">© 2026 오늘은 뭐먹지. All rights reserved.</p>
       </div>
     </footer>
     <script src="./js/update-preview.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/hero-menu-picker.js"></script>
+    <script src="./js/sticky-cta.js"></script>
   </body>
 </html>
