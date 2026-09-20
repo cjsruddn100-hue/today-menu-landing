@@ -343,3 +343,252 @@
     position: static;
   }
 }
+
+/* ── 위치 기반: 실제 지도 + 뽑기 ─────────────────────────── */
+.location-map {
+  width: 100%;
+  aspect-ratio: 12 / 7;
+  border: 1px solid var(--color-border, #e8e3da);
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+}
+
+.location-map[hidden],
+.location-image[hidden],
+.location-result[hidden] {
+  display: none;
+}
+
+.location-me-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.2);
+}
+
+.location-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  margin-top: var(--space-5, 20px);
+}
+
+.location-reset-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text-muted, #6b6557);
+  font-size: 0.8125rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.location-status {
+  margin-top: var(--space-3, 12px);
+}
+
+.location-result {
+  margin-top: var(--space-4, 16px);
+  padding: var(--space-5, 20px);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-md, 16px);
+  background: rgba(249, 115, 22, 0.06);
+}
+
+.location-result-label {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #ea6000);
+}
+
+.location-result-name {
+  margin: var(--space-1, 4px) 0 0;
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--color-text, #130f09);
+}
+
+.location-result-meta,
+.location-result-address,
+.location-result-note {
+  margin: var(--space-1, 4px) 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.location-result-note {
+  color: var(--color-primary-dark, #ea6000);
+}
+
+.location-result-link {
+  display: inline-block;
+  margin-top: var(--space-3, 12px);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #ea6000);
+}
+
+/* ── 위치 기반: 지도 핀 + 목록 + 정보 패널 (발표용) ───────── */
+.location-stage {
+  position: relative;
+}
+
+.location-pins {
+  position: absolute;
+  inset: 0;
+}
+
+.location-pin {
+  position: absolute;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--color-primary, #f97316);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.location-pin:hover,
+.location-pin.is-active {
+  z-index: 2;
+  background: var(--color-primary-dark, #ea6000);
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+.location-pin.is-active {
+  box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.25);
+}
+
+.location-list {
+  display: grid;
+  gap: var(--space-2, 8px);
+  margin: var(--space-4, 16px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.location-list-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  border: 1px solid var(--color-border, #e8e3da);
+  border-radius: var(--radius-sm, 10px);
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.location-list-item:hover,
+.location-list-item.is-active {
+  border-color: var(--color-primary, #f97316);
+  background: rgba(249, 115, 22, 0.06);
+}
+
+.location-list-num {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-primary, #f97316);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.location-list-name {
+  flex: 1;
+  font-weight: 700;
+  color: var(--color-text, #130f09);
+}
+
+.location-list-meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.location-detail {
+  position: relative;
+  margin-top: var(--space-4, 16px);
+  padding: var(--space-5, 20px);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-md, 16px);
+  background: rgba(249, 115, 22, 0.06);
+}
+
+.location-detail[hidden] {
+  display: none;
+}
+
+.location-detail-label {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #ea6000);
+}
+
+.location-detail-name {
+  margin: var(--space-1, 4px) 0 0;
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--color-text, #130f09);
+}
+
+.location-detail-meta {
+  margin: var(--space-1, 4px) 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.location-detail-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3, 12px);
+  margin: var(--space-4, 16px) 0 0;
+}
+
+.location-detail-info dt {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #6b6557);
+}
+
+.location-detail-info dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+  color: var(--color-text, #130f09);
+}
+
+.location-detail-note {
+  margin: var(--space-3, 12px) 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-primary-dark, #ea6000);
+}
+
+.location-detail-close {
+  position: absolute;
+  top: var(--space-3, 12px);
+  right: var(--space-3, 12px);
+  padding: 4px 10px;
+  border: 1px solid var(--color-border, #e8e3da);
+  border-radius: var(--radius-pill, 999px);
+  background: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
