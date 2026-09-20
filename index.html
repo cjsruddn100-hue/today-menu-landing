@@ -209,7 +209,7 @@
         <div class="features-card-list">
           <!-- 기능 1: 랜덤 추천 -->
           <article class="ui-card-light features-card">
-            <div class="ui-card-icon">🎲</div>
+            <svg class="features-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5" /><circle cx="8" cy="8" r="1.1" fill="currentColor" /><circle cx="12" cy="12" r="1.1" fill="currentColor" /><circle cx="16" cy="16" r="1.1" fill="currentColor" /></svg>
             <span class="ui-badge">핵심 기능</span>
             <h3 class="text-card-title">랜덤 추천</h3>
             <p class="text-card-body">
@@ -219,18 +219,34 @@
 
             <dl class="features-solve">
               <div class="features-solve-row">
-                <dt class="features-solve-label">이런 게 불편했다면</dt>
-                <dd class="features-solve-text">
-                  일하다 말고 지도 앱 뒤지고, 단톡방에서 서로 눈치만 보다
-                  30분이 날아갔다면
+                <dt class="features-solve-label"><span class="features-solve-tag">전</span>불편한 점</dt>
+                <dd class="features-solve-scene" aria-hidden="true">
+                  <div class="features-scene-chat">
+                    <p class="features-scene-time">11:30</p>
+                    <p class="features-scene-bubble">점심 뭐 먹지?</p>
+                    <p class="features-scene-bubble features-scene-bubble-me">아무거나~</p>
+                    <p class="features-scene-bubble">난 다 좋아</p>
+                    <p class="features-scene-bubble features-scene-bubble-me">…</p>
+                    <p class="features-scene-time features-scene-time-bad">12:00 · 30분 증발</p>
+                  </div>
                 </dd>
+                <dd class="features-solve-text">지도 앱 뒤지고 단톡방 눈치 게임. 정하다 보면 30분이 사라져요.</dd>
               </div>
               <div class="features-solve-row features-solve-row-good">
-                <dt class="features-solve-label">이렇게 해소됩니다</dt>
-                <dd class="features-solve-text">
-                  버튼 한 번 → 가게 하나 → 링크 공유. 회의도 검색도 없이
-                  3초 안에 끝납니다.
+                <dt class="features-solve-label"><span class="features-solve-tag features-solve-tag-good">후</span>좋아진 점</dt>
+                <dd class="features-solve-scene" aria-hidden="true">
+                  <div class="features-scene-chat">
+                    <p class="features-scene-time">11:30</p>
+                    <div class="features-scene-pick">
+                      <span class="features-scene-pick-label">오늘은 여기!</span>
+                      <strong class="features-scene-pick-name">한끼 김치찌개</strong>
+                      <span class="features-scene-pick-meta">한식 · 180m</span>
+                    </div>
+                    <p class="features-scene-bubble features-scene-bubble-me">ㄱㄱ</p>
+                    <p class="features-scene-time features-scene-time-good">11:30 · 3초 컷</p>
+                  </div>
                 </dd>
+                <dd class="features-solve-text">버튼 한 번에 가게 하나, 링크만 넘기면 끝이에요.</dd>
               </div>
             </dl>
 
@@ -241,7 +257,7 @@
 
           <!-- 기능 2: 최근 메뉴 저장 -->
           <article class="ui-card-light features-card">
-            <div class="ui-card-icon">🗓️</div>
+            <svg class="features-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18M10 14l4 4M14 14l-4 4" /></svg>
             <span class="ui-badge">자동 기억</span>
             <h3 class="text-card-title">어제 먹은 건 빼고</h3>
             <p class="text-card-body">
@@ -251,18 +267,30 @@
 
             <dl class="features-solve">
               <div class="features-solve-row">
-                <dt class="features-solve-label">이런 게 불편했다면</dt>
-                <dd class="features-solve-text">
-                  새로 생긴 가게가 궁금한데도 실패가 무서워서, 결국 이번 주에만
-                  세 번째 같은 집에 갔다면
+                <dt class="features-solve-label"><span class="features-solve-tag">전</span>불편한 점</dt>
+                <dd class="features-solve-scene" aria-hidden="true">
+                  <ol class="features-scene-week">
+                    <li class="features-scene-day features-scene-day-same"><span>월</span>김치찌개</li>
+                    <li class="features-scene-day features-scene-day-same"><span>화</span>김치찌개</li>
+                    <li class="features-scene-day features-scene-day-same"><span>수</span>김치찌개</li>
+                    <li class="features-scene-day"><span>목</span>?</li>
+                  </ol>
+                  <p class="features-scene-time features-scene-time-bad">이번 주만 3번째…</p>
                 </dd>
+                <dd class="features-solve-text">실패가 무서워서 결국 늘 가던 그 집으로.</dd>
               </div>
               <div class="features-solve-row features-solve-row-good">
-                <dt class="features-solve-label">이렇게 해소됩니다</dt>
-                <dd class="features-solve-text">
-                  최근 5일간 간 곳은 후보에서 자동 제외. 따로 적어둘 필요 없이
-                  매일 다른 집으로 안내합니다.
+                <dt class="features-solve-label"><span class="features-solve-tag features-solve-tag-good">후</span>좋아진 점</dt>
+                <dd class="features-solve-scene" aria-hidden="true">
+                  <ol class="features-scene-week">
+                    <li class="features-scene-day"><span>월</span>김치찌개</li>
+                    <li class="features-scene-day"><span>화</span>칼국수</li>
+                    <li class="features-scene-day"><span>수</span>돈까스</li>
+                    <li class="features-scene-day"><span>목</span>쌀국수</li>
+                  </ol>
+                  <p class="features-scene-time features-scene-time-good">5일 동안 안 겹침</p>
                 </dd>
+                <dd class="features-solve-text">최근 5일 간 곳은 자동으로 빠져서 매일 다른 집.</dd>
               </div>
             </dl>
 
@@ -474,6 +502,160 @@
         <p class="text-caption features-flow-outro">
           입력 한 번 없이, 여기까지 3초. 이게 저희가 만든 점심 정하는 방식입니다.
         </p>
+
+        <!-- 추가 기능: 이것도 한번 써보세요 -->
+        <div class="features-more">
+          <div class="section-heading-group">
+            <span class="section-eyebrow">MORE TO TRY</span>
+            <h2 class="section-heading features-more-heading">
+              점심 하나로 끝이 아니에요,<br /><span class="features-flow-accent">이것도 한번 써보세요</span>
+            </h2>
+            <p class="section-description">
+              혼자 먹는 날, 팀이 같이 가는 날, 비 오는 날, 회식 날까지. 상황이 달라도 정하는 건 여전히 3초입니다.
+            </p>
+          </div>
+
+          <ul class="features-more-list">
+          <li class="ui-card-light features-more-card">
+            <svg class="features-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            <span class="features-more-tag">팀 자동 필터</span>
+            <h3 class="text-card-title">한 명이라도 못 먹으면 탈락</h3>
+            <p class="text-card-body">
+              팀원 식이 조건을 한 번만 넣어두세요. 알레르기 정보가 확인되지 않은 식당은 그 조건의 추천에서 알아서 빠집니다. 메뉴판 앞에서 서로 눈치 볼 일이 없어요.
+            </p>
+            <p class="features-more-quote">“저 갑각류 안 되는데요…” 이 말, 이제 식당 앞에서 안 나옵니다.</p>
+          </li>
+          <li class="ui-card-light features-more-card">
+            <svg class="features-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v2M4.93 4.93l1.41 1.41M20 12h2M19.07 4.93l-1.41 1.41M15.95 12.65a4 4 0 0 0-5.93-4.13" /><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z" /></svg>
+            <span class="features-more-tag">날씨 연동</span>
+            <h3 class="text-card-title">비 오면 칼국수, 35도면 냉면</h3>
+            <p class="text-card-body">
+              오늘 날씨를 불러와서 추천에 살짝 반영해요. 비 오는 날엔 국물, 폭염엔 시원한 쪽으로. 날씨 정보를 못 불러오면 억지로 맞추지 않고 평소처럼 뽑습니다.
+            </p>
+            <p class="features-more-quote">우산 없이 15분 걸어가는 점심은 이제 그만.</p>
+          </li>
+          <li class="ui-card-light features-more-card">
+            <svg class="features-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 11h1a3 3 0 0 1 0 6h-1" /><path d="M9 12v6M13 12v6" /><path d="M14 7.5c-1 0-1.44.5-3 .5s-2-.5-3-.5-1.72.5-2.5.5a2.5 2.5 0 0 1 0-5c.78 0 1.57.5 2.5.5S9.44 2 11 2s2 1.5 3 1.5 1.72-.5 2.5-.5a2.5 2.5 0 0 1 0 5c-.78 0-1.5-.5-2.5-.5Z" /><path d="M5 8v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8" /></svg>
+            <span class="features-more-tag">회식 1·2차 페어링</span>
+            <h3 class="text-card-title">1차는 고기, 2차는 어디?</h3>
+            <p class="text-card-body">
+              1차와 2차 후보를 나란히 놓고 비교해서 동선까지 이어 드려요. 끝나면 실제 참여자와 결제 금액을 넣어 정산까지 마무리합니다.
+            </p>
+            <p class="features-more-quote">다음 날 아침 “어제 누가 얼마 냈더라?” 추리 게임 종료.</p>
+          </li>
+          </ul>
+
+          <!-- 추가 기능 동작 설명 (탭) -->
+          <div class="features-how">
+            <p class="features-how-heading">
+              그럼 이건 <span class="features-flow-accent">어떻게 동작하냐면요</span>
+            </p>
+            <div class="features-how-tabs" role="tablist" aria-label="추가 기능 동작 설명">
+            <button class="features-how-tab" id="features-how-tab-party" type="button" role="tab" aria-controls="features-how-party" aria-selected="true">회식 1·2차 페어링</button>
+            <button class="features-how-tab" id="features-how-tab-team" type="button" role="tab" aria-controls="features-how-team" aria-selected="false" tabindex="-1">팀 자동 필터</button>
+            <button class="features-how-tab" id="features-how-tab-weather" type="button" role="tab" aria-controls="features-how-weather" aria-selected="false" tabindex="-1">날씨 연동</button>
+            </div>
+            <div class="features-how-panel" id="features-how-party" role="tabpanel" aria-labelledby="features-how-tab-party">
+              <p class="features-how-lead">1차에서 고기 먹고 나왔는데 2차 장소로 또 20분 회의? 그 20분을 없애는 흐름입니다.</p>
+              <ol class="features-how-steps">
+                <li class="features-how-step">
+                  <span class="features-how-num">1</span>
+                  <p class="features-how-step-title">인원·예산 입력</p>
+                  <p class="features-how-step-text">몇 명이 가는지, 1인당 얼마까지인지 두 칸만 채워요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">2</span>
+                  <p class="features-how-step-title">1차 한 곳 뽑기</p>
+                  <p class="features-how-step-text">회사 반경 안에서 인원이 앉을 수 있는 가게 중 한 곳을 골라요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">3</span>
+                  <p class="features-how-step-title">2차 짝 맞추기</p>
+                  <p class="features-how-step-text">1차 가게에서 걸어서 5분 안, 1차와 종류가 다른 곳을 2차 후보로 붙여요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">4</span>
+                  <p class="features-how-step-title">참여자·금액으로 정산</p>
+                  <p class="features-how-step-text">실제 온 사람과 결제 금액을 넣으면 1/N이 바로 나와요.</p>
+                </li>
+              </ol>
+              <div class="features-how-tech">
+                <span class="features-how-tech-label">이렇게 만들어요</span>
+                <span class="features-how-chip">좌표 사이 거리 계산</span>
+                <span class="features-how-chip">filter · sort</span>
+                <span class="features-how-chip">reduce로 합계·1/N</span>
+                <span class="features-how-chip">localStorage에 회식 기록</span>
+              </div>
+              <p class="features-how-note">고기 → 고기처럼 같은 종류가 연달아 나오지 않게, 1차 카테고리는 2차 후보에서 뺍니다.</p>
+            </div>
+            <div class="features-how-panel" id="features-how-team" role="tabpanel" aria-labelledby="features-how-tab-team" hidden>
+              <p class="features-how-lead">메뉴판 앞에서 "저 이거 못 먹어요"가 나오기 전에, 후보 단계에서 미리 거릅니다.</p>
+              <ol class="features-how-steps">
+                <li class="features-how-step">
+                  <span class="features-how-num">1</span>
+                  <p class="features-how-step-title">참여자 체크</p>
+                  <p class="features-how-step-text">오늘 같이 가는 사람을 고르면 저장해 둔 식이 조건을 불러와요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">2</span>
+                  <p class="features-how-step-title">조건 모으기</p>
+                  <p class="features-how-step-text">채식·갑각류·견과류처럼 한 명이라도 걸리는 조건을 전부 합쳐요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">3</span>
+                  <p class="features-how-step-title">가게 태그와 비교</p>
+                  <p class="features-how-step-text">가게 정보에 적힌 알레르기·메뉴 태그와 하나씩 맞춰 봐요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">4</span>
+                  <p class="features-how-step-title">모르면 빼기</p>
+                  <p class="features-how-step-text">정보가 확인되지 않은 가게는 "괜찮겠지"로 넣지 않고 그 조건에선 제외해요.</p>
+                </li>
+              </ol>
+              <div class="features-how-tech">
+                <span class="features-how-tech-label">이렇게 만들어요</span>
+                <span class="features-how-chip">배열 합치기 (Set)</span>
+                <span class="features-how-chip">some / every</span>
+                <span class="features-how-chip">조건별 filter</span>
+                <span class="features-how-chip">dataset으로 참여자 연결</span>
+              </div>
+              <p class="features-how-note">"아마 괜찮을 거야"는 추천하지 않습니다. 확인된 곳만 남기는 게 원칙이에요.</p>
+            </div>
+            <div class="features-how-panel" id="features-how-weather" role="tabpanel" aria-labelledby="features-how-tab-weather" hidden>
+              <p class="features-how-lead">비 오는 날 15분 걸어가서 냉면 먹는 일, 이제 없어요.</p>
+              <ol class="features-how-steps">
+                <li class="features-how-step">
+                  <span class="features-how-num">1</span>
+                  <p class="features-how-step-title">날씨 불러오기</p>
+                  <p class="features-how-step-text">공공데이터포털 기상청 단기예보로 지금 비·기온을 가져와요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">2</span>
+                  <p class="features-how-step-title">오늘 날씨 분류</p>
+                  <p class="features-how-step-text">비 / 폭염 / 한파 / 보통 중 하나로 나눠요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">3</span>
+                  <p class="features-how-step-title">가중치 주기</p>
+                  <p class="features-how-step-text">비엔 국물·가까운 곳, 폭염엔 시원한 메뉴 쪽에 확률을 조금 더 줘요.</p>
+                </li>
+                <li class="features-how-step">
+                  <span class="features-how-num">4</span>
+                  <p class="features-how-step-title">그래도 랜덤</p>
+                  <p class="features-how-step-text">가중치를 줘도 뽑기는 랜덤이라, 매일 칼국수만 나오진 않아요.</p>
+                </li>
+              </ol>
+              <div class="features-how-tech">
+                <span class="features-how-tech-label">이렇게 만들어요</span>
+                <span class="features-how-chip">fetch + async/await</span>
+                <span class="features-how-chip">try / catch</span>
+                <span class="features-how-chip">가중치 랜덤 (Math.random)</span>
+                <span class="features-how-chip">실패 시 기본값</span>
+              </div>
+              <p class="features-how-note">날씨를 못 불러오면 억지로 맞추지 않고, 가중치 없이 평소처럼 뽑습니다.</p>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -811,6 +993,7 @@
         <p class="footer-copy">© 2026 오늘은 뭐먹지. All rights reserved.</p>
       </div>
     </footer>
+    <script src="./js/features-more.js" defer></script>
     <script src="./js/update-preview.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/hero-menu-picker.js"></script>
