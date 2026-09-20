@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" role="img" aria-label="현재 위치와 걸어갈 수 있는 반경을 표시한 지도">
+  <defs><clipPath id="c"><rect width="720" height="420" rx="16"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="720" height="420" fill="#f3efe7"/>
+    <g fill="#e9e3d6">
+      <rect x="40" y="40" width="180" height="120" rx="8"/>
+      <rect x="260" y="40" width="150" height="120" rx="8"/>
+      <rect x="450" y="40" width="230" height="90" rx="8"/>
+      <rect x="40" y="210" width="140" height="170" rx="8"/>
+      <rect x="220" y="240" width="190" height="140" rx="8"/>
+      <rect x="450" y="180" width="230" height="200" rx="8"/>
+    </g>
+    <g stroke="#fff" stroke-linecap="round">
+      <path d="M0 185 H720" stroke-width="22"/>
+      <path d="M235 0 V420" stroke-width="18"/>
+      <path d="M430 0 V420" stroke-width="14"/>
+      <path d="M0 400 H720" stroke-width="12"/>
+    </g>
+    <path d="M-20 320 C 140 300, 220 360, 380 330 S 620 300, 740 340" fill="none" stroke="#dbe7e4" stroke-width="16"/>
+    <circle cx="330" cy="210" r="120" fill="#f97316" fill-opacity="0.07" stroke="#f97316" stroke-opacity="0.35" stroke-dasharray="6 6"/>
+    <circle cx="330" cy="210" r="16" fill="#2563eb" fill-opacity="0.15"/>
+    <circle cx="330" cy="210" r="6" fill="#2563eb"/>
+    <text x="330" y="240" text-anchor="middle" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="700" fill="#2563eb">내 위치</text>
+  </g>
+  <rect x=".5" y=".5" width="719" height="419" rx="16" fill="none" stroke="#e8e3da"/>
+</svg>
