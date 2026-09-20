@@ -638,3 +638,444 @@
   background: #2563eb;
   box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.2);
 }
+
+/* ---------- 라인 아이콘 (이모지 대신) ---------- */
+.features-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+}
+
+/* ---------- 추가 기능: 이것도 한번 써보세요 ---------- */
+.features-more {
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+}
+
+.features-more-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: var(--space-10) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.features-more-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-more-tag {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.features-more-card .text-card-body {
+  flex: 1;
+}
+
+.features-more-quote {
+  margin: var(--space-5) 0 0;
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .features-more-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.features-more-card .text-card-title {
+  margin-bottom: var(--space-2);
+  word-break: keep-all;
+}
+
+.features-more-card .text-card-body,
+.features-more-quote {
+  word-break: keep-all;
+}
+
+.features-more-heading {
+  word-break: keep-all;
+}
+
+/* ---------- 추가 기능 동작 설명 (탭) ---------- */
+.features-how {
+  margin-top: var(--space-12);
+  padding: var(--space-10);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.features-how-heading {
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+  font-size: 24px;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.features-how-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.features-how-tab {
+  padding: 10px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-how-tab:hover {
+  border-color: var(--color-primary-border);
+  color: var(--color-primary-dark);
+}
+
+.features-how-tab.is-active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.features-how-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.features-how-lead {
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+  font-size: 17px;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+.features-how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.features-how-step {
+  padding: var(--space-5);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-light-soft);
+}
+
+.features-how-num {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  margin-bottom: var(--space-3);
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.features-how-step-title {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+.features-how-step-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.features-how-tech {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.features-how-tech-label {
+  margin-right: var(--space-2);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.features-how-chip {
+  padding: 5px 12px;
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.features-how-note {
+  margin: var(--space-5) 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  word-break: keep-all;
+}
+
+@media (max-width: 900px) {
+  .features-how {
+    padding: var(--space-6);
+  }
+
+  .features-how-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .features-how-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 기능 카드: 전 / 후 구분 ---------- */
+.features-solve {
+  gap: var(--space-5);
+}
+
+.features-solve-row {
+  position: relative;
+}
+
+.features-solve-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.features-solve-tag {
+  display: inline-grid;
+  min-width: 26px;
+  height: 22px;
+  place-items: center;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #e8e3da;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.features-solve-tag-good {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* 전 → 후 사이 아래 방향 화살표 (CSS 삼각형) */
+.features-solve-row-good::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  border-top: 8px solid var(--color-primary);
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  transform: translateX(-50%);
+}
+
+.features-solve-row:not(.features-solve-row-good) .features-solve-text {
+  color: var(--color-text-muted);
+}
+
+/* ---------- 전 → 후 : 그림으로 보여주기 ---------- */
+.features-solve {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.features-solve-row {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4);
+  border-left: 0;
+  border: 1px solid var(--color-border);
+}
+
+.features-solve-row-good {
+  border-color: var(--color-primary-border);
+}
+
+/* 전 → 후 사이 오른쪽 화살표 */
+.features-solve-row-good::before {
+  top: 50%;
+  left: -22px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 9px solid var(--color-primary);
+  border-right: 0;
+  transform: translateY(-50%);
+}
+
+.features-solve-label {
+  margin-bottom: var(--space-3);
+}
+
+.features-solve-scene {
+  flex: 1;
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.features-solve-text {
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+/* 단톡방 장면 */
+.features-scene-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.features-scene-bubble {
+  align-self: flex-start;
+  max-width: 85%;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 12px 12px 12px 3px;
+  background: #efebe4;
+  color: var(--color-text);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.features-scene-bubble-me {
+  align-self: flex-end;
+  border-radius: 12px 12px 3px 12px;
+  background: #fde8d7;
+}
+
+.features-scene-time {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.features-scene-time-bad {
+  margin-top: 4px;
+  color: #b42318;
+}
+
+.features-scene-time-good {
+  margin-top: 4px;
+  color: var(--color-primary-dark);
+}
+
+.features-scene-pick {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  border: 1px solid var(--color-primary-border);
+  border-radius: 10px;
+  background: #fff7f0;
+}
+
+.features-scene-pick-label {
+  color: var(--color-primary-dark);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.features-scene-pick-name {
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.features-scene-pick-meta {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+/* 요일 장면 */
+.features-scene-week {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.features-scene-day {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f6f4f0;
+  color: var(--color-text);
+  font-size: 12px;
+}
+
+.features-scene-day span {
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.features-scene-day-same {
+  background: #fdecea;
+  color: #b42318;
+}
+
+.features-solve-row-good .features-scene-day {
+  background: #fff3e8;
+}
+
+@media (max-width: 560px) {
+  .features-solve {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .features-solve-row-good::before {
+    top: -17px;
+    left: 50%;
+    border-top: 9px solid var(--color-primary);
+    border-right: 8px solid transparent;
+    border-bottom: 0;
+    border-left: 8px solid transparent;
+    transform: translateX(-50%);
+  }
+}
