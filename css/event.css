@@ -252,3 +252,114 @@
     align-items: flex-start;
   }
 }
+
+/* ============================================================
+   EVENT | 혜택 카드와 후기 폼 좌우 배치
+   ============================================================ */
+
+/* 왼쪽 혜택 카드 + 오른쪽 후기 폼을 묶는 영역 */
+.event-bottom-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  align-items: stretch;
+}
+
+/* 왼쪽 열이 카드 높이를 끝까지 채우도록 함 */
+.event-benefit-column {
+  display: flex;
+  min-width: 0;
+}
+
+/* 기존 혜택 배너를 왼쪽의 세로 카드로 변경 */
+.event-benefit-column .event-benefit-banner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    155deg,
+    var(--color-primary-soft) 0%,
+    var(--color-surface-dark) 75%
+  );
+}
+
+/* 혜택 문구 묶음 */
+.event-benefit-column .event-benefit-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* 왼쪽 카드 제목 */
+.event-benefit-column .event-benefit-heading {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+}
+
+/* 왼쪽 카드 설명 */
+.event-benefit-column .event-benefit-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+/* 기존 CTA를 별도의 넓은 가로 박스가 아니라 카드 안쪽 CTA로 변경 */
+.event-benefit-column .event-cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: auto;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* CTA 설명 */
+.event-benefit-column .event-cta-content {
+  display: block;
+}
+
+.event-benefit-column .event-cta-description {
+  margin: 0;
+  color: var(--color-text-on-dark-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* CTA 버튼은 왼쪽 카드 폭을 채움 */
+.event-benefit-column .event-cta-card .button {
+  width: 100%;
+  justify-content: center;
+}
+
+/* 오른쪽 후기 폼: 좌우 배치에서는 상단 여백 제거 */
+.event-bottom-layout .event-feedback-form {
+  min-width: 0;
+  margin: 0;
+}
+
+/* 모바일·태블릿: 카드 두 개를 세로로 전환 */
+@media (max-width: 760px) {
+  .event-bottom-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-benefit-column .event-benefit-banner {
+    min-height: auto;
+  }
+}

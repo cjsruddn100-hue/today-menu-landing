@@ -3,6 +3,59 @@
    ·
    ========================================================= */
 
+
+ /* ============================================================
+   UPDATE | 시작 배너
+   ============================================================ */
+
+   .update-intro-banner {
+    display: flex;
+    min-height: 250px;
+    flex-direction: column;
+    justify-content: center;
+  
+    /*
+     * page-container의 좌우 패딩을 상쇄해서
+     * 배너가 섹션의 좌우 끝까지 확장되도록 함
+     */
+    width: calc(100% + (var(--space-8) * 2));
+    margin-top: calc(var(--space-8) * -1);
+    margin-right: calc(var(--space-8) * -1);
+    margin-bottom: var(--space-8);
+    margin-left: calc(var(--space-8) * -1);
+  
+    padding: var(--space-10) var(--space-8);
+    border: 0;
+    border-radius: 0;
+  
+    background: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(255, 102, 18, 0.22);
+  }
+  .update-intro-eyebrow {
+    color: #fff3e8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+  
+  .update-intro-heading {
+    max-width: 760px;
+    margin: var(--space-3) 0 0;
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+  }
+  .update-intro-description {
+    max-width: 620px;
+    margin: var(--space-3) 0 0;
+    color: #fff3e8;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
 /* UPDATE 카드 3개를 가로 3열로 배치 */
 .update-card-list {
   display: grid;
@@ -99,5 +152,354 @@
     .update-preview-header {
       align-items: flex-start;
       flex-direction: column;
+    }
+  }
+
+  
+  /* ============================================================
+   UPDATE | 메뉴 사다리타기 게임
+   ============================================================ */
+/* ============================================================
+   UPDATE | 실제 사다리 게임 미리보기
+   ============================================================ */
+
+   .ladder-game {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+  }
+  
+  /* 전체 게임을 하나의 카드처럼 감싸는 영역 */
+  .ladder-game-card {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-light);
+    box-shadow: 0 14px 30px rgba(42, 29, 18, 0.08);
+  }
+  
+  /* 카드 상단 제목 */
+  .ladder-game-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+  
+  .ladder-game-kicker {
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+  
+  .ladder-game-card-title {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  
+  .ladder-game-card-description {
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .ladder-reset-button {
+    flex-shrink: 0;
+    padding: 8px 11px;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-light);
+    color: var(--color-text-muted);
+    font-size: 11px;
+    cursor: pointer;
+  }
+  
+  /* 왼쪽 사다리 + 오른쪽 후보 카드 */
+  .ladder-game-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(210px, 0.65fr);
+    gap: var(--space-4);
+    align-items: stretch;
+  }
+  
+  /* 왼쪽 시각 사다리 카드 */
+  .ladder-visual-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    background: linear-gradient(
+      180deg,
+      #fffaf4 0%,
+      #ffe8d6 100%
+    );
+  }
+  
+  .ladder-visual-caption {
+    padding: var(--space-4) var(--space-5) 0;
+    color: #a44721;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  
+  /* 사다리판 */
+  .ladder-board {
+    position: relative;
+    display: flex;
+    min-height: 350px;
+    flex-direction: column;
+    overflow: hidden;
+    padding: var(--space-4) var(--space-5);
+  }
+  
+  /* 후보 버튼 행 */
+  .ladder-start-row,
+  .ladder-result-row {
+    display: grid;
+    grid-template-columns: repeat(var(--ladder-count), minmax(0, 1fr));
+    gap: 8px;
+    position: relative;
+    z-index: 4;
+  }
+  
+  .ladder-start-button {
+    min-width: 0;
+    padding: 8px 5px;
+    overflow: hidden;
+    border: 1px solid #f4c8b3;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #7c341b;
+    font-size: 11px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  
+  .ladder-start-button:hover,
+  .ladder-start-button.is-selected {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+  
+  /* 선이 그려지는 실제 영역 */
+  .ladder-lines {
+    position: relative;
+    height: 210px;
+    margin: 8px 16px;
+  }
+  
+  /* 세로선 */
+  .ladder-vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 999px;
+    background: #fb923c;
+    transform: translateX(-50%);
+  }
+  
+  /* 가로선 */
+  .ladder-rung {
+    position: absolute;
+    height: 4px;
+    border-radius: 999px;
+    background: #fdba74;
+    transform: translateY(-50%);
+  }
+  
+  /* 선택한 경로 */
+  .ladder-vertical-line.is-path,
+  .ladder-rung.is-path {
+    background: var(--color-primary);
+  }
+  
+  .ladder-vertical-line.is-path {
+    width: 5px;
+  }
+  
+  .ladder-rung.is-path {
+    height: 6px;
+  }
+  
+  /* 시작 전 종이로 가린 상태 */
+  .ladder-cover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: 148px;
+    padding: 14px 10px;
+    border: 2px dashed var(--color-primary);
+    border-radius: 12px;
+    background: #fffdf9;
+    color: #8c7060;
+    box-shadow: 0 8px 20px rgba(120, 60, 20, 0.12);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* 사다리 시작 후 종이 제거 */
+  .ladder-cover.is-hidden {
+    display: none;
+  }
+  
+  /* 하단 결과 */
+  .ladder-result-label {
+    display: grid;
+    min-width: 0;
+    min-height: 30px;
+    place-items: center;
+    padding: 5px;
+    border-radius: 7px;
+    background: rgba(249, 115, 22, 0.12);
+    color: #a44721;
+    font-size: 10px;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  .ladder-result-label.is-winner {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+  
+  /* 결과 문구 */
+  .ladder-game-result {
+    min-height: 24px;
+    margin: 0;
+    padding: 0 var(--space-5) var(--space-5);
+    color: #a44721;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  /* 오른쪽 후보 카드 */
+  .ladder-candidate-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-light);
+  }
+  
+  .ladder-candidate-title {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 800;
+  }
+  
+  .ladder-candidate-description {
+    margin: var(--space-2) 0 var(--space-3);
+    color: var(--color-text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  
+  .ladder-candidate-list {
+    display: flex;
+    max-height: 230px;
+    flex-direction: column;
+    gap: 0;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .ladder-candidate-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text);
+    font-size: 12px;
+  }
+  
+  .ladder-candidate-list input {
+    accent-color: var(--color-primary);
+  }
+  
+  .ladder-candidate-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: var(--space-4);
+  }
+  
+  .ladder-candidate-actions .button-primary,
+  .ladder-secondary-button {
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  
+  .ladder-secondary-button {
+    border: 1px solid var(--color-border-light);
+    background: var(--color-bg-light-soft);
+    color: var(--color-text-muted);
+  }
+  
+  /* 후보 입력 영역 */
+  .ladder-game-setting {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .ladder-game-label {
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  
+  .ladder-game-input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-light);
+    color: var(--color-text);
+    font: inherit;
+  }
+  
+  .ladder-game-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  
+  @media (max-width: 800px) {
+    .ladder-game-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .ladder-candidate-card {
+      order: 2;
+    }
+  
+    .ladder-visual-card {
+      order: 1;
     }
   }

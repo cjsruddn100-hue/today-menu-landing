@@ -663,8 +663,24 @@
 
     <!-- ============ update (담당: C) ============ -->
     <section id="update" class="page-section page-section-light-soft">
+      
       <div class="page-container">
         <!-- 공통 제목 영역 -->
+        <div class="page-container">
+          <div class="update-intro-banner">
+            <span class="update-intro-eyebrow">BEYOND THE BETA</span>
+        
+            <h2 class="update-intro-heading">
+              아직 끝이 아니에요.
+            </h2>
+        
+            <p class="update-intro-description">
+              정식 출시 전까지 새로운 기능이 계속 업데이트됩니다.
+              여러분의 의견이 다음 기능을 만듭니다.
+            </p>
+          </div>
+        
+         
         <div class="section-heading-group">
           <span class="section-eyebrow">NEXT UPDATE</span>
 
@@ -680,7 +696,12 @@
         <div class="update-card-list">
           <!-- 카드 1 -->
           <article class="ui-card-light update-card">
-            <div class="ui-card-icon"></div>
+            <div class="ui-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <path d="M12 8v32M24 8v32M36 8v32" />
+                <path d="M12 16h12M24 28h12M12 36h12" />
+              </svg>
+            </div>
 
             <span class="ui-badge">공평한 결정</span>
 
@@ -701,7 +722,15 @@
 
           <!-- 카드 2 -->
           <article class="ui-card-light update-card">
-            <div class="ui-card-icon"></div>
+            <div class="ui-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <rect x="10" y="10" width="28" height="28" rx="6" />
+                <circle cx="18" cy="18" r="2" />
+                <circle cx="30" cy="30" r="2" />
+                <circle cx="30" cy="18" r="2" />
+                <circle cx="18" cy="30" r="2" />
+              </svg>
+            </div>
 
             <span class="ui-badge">배틀 초대</span>
 
@@ -723,7 +752,13 @@
 
           <!-- 카드 3 -->
           <article class="ui-card-light update-card">
-            <div class="ui-card-icon"></div>
+            <div class="ui-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" role="img">
+                <path d="M24 40s12-11 12-21a12 12 0 1 0-24 0c0 10 12 21 12 21Z" />
+                <circle cx="24" cy="19" r="4" />
+                <path d="M12 35h24M16 40h16" />
+              </svg>
+            </div>
 
             <span class="ui-badge">메뉴 쳐내기</span>
 
@@ -769,12 +804,112 @@
                   data-preview-content="ladder"
                 >
                   <h4>메뉴 사다리타기</h4>
-                  <p>
-                    메뉴 후보를 입력하고 사다리를 따라가
-                    오늘의 메뉴를 랜덤으로 결정하는 기능입니다.
-                  </p>
-                </div>
-            
+                  <div class="ladder-game">
+                    <div class="ladder-game-setting">
+                      <label for="ladder-menu-input" class="ladder-game-label">
+                        주변 식당 후보를 선택해 주세요
+                      </label>
+                  
+                      <input
+                        type="text"
+                        id="ladder-menu-input"
+                        class="ladder-game-input"
+                        value="한끼 김치찌개, 소담 칼국수, 오늘 돈까스, 초록 쌀국수, 든든 제육"
+                        placeholder="식당 후보를 쉼표(,)로 입력하세요"
+                      />
+                  
+                      <button
+                        type="button"
+                        id="ladder-create-button"
+                        class="button button-primary"
+                      >
+                        후보 불러오기
+                      </button>
+                    </div>
+                  
+                    <div class="ladder-game-card">
+                      <div class="ladder-game-card-heading">
+                        <div>
+                          <span class="ladder-game-kicker">
+                            LADDER GAME PREVIEW
+                          </span>
+                  
+                          <h4 class="ladder-game-card-title">
+                            오늘의 식당을 사다리로 정해보세요
+                          </h4>
+                  
+                          <p class="ladder-game-card-description">
+                            오른쪽에서 후보를 선택한 뒤 사다리 시작 버튼을 눌러 주세요.
+                          </p>
+                        </div>
+                  
+                        <button
+                          type="button"
+                          id="ladder-reset-button"
+                          class="ladder-reset-button"
+                        >
+                          다시 선택
+                        </button>
+                      </div>
+                  
+                      <div class="ladder-game-grid">
+                        <div class="ladder-visual-card">
+                          <div class="ladder-visual-caption">
+                            사다리 게임 미리보기
+                          </div>
+                  
+                          <div
+                            id="ladder-board"
+                            class="ladder-board"
+                            aria-live="polite"
+                          >
+                            <p class="ladder-board-guide">
+                              오른쪽 후보를 선택한 뒤 사다리 시작 버튼을 눌러 보세요.
+                            </p>
+                          </div>
+                  
+                          <p
+                            id="ladder-game-result"
+                            class="ladder-game-result"
+                            aria-live="polite"
+                          ></p>
+                        </div>
+                  
+                        <aside class="ladder-candidate-card">
+                          <h4 class="ladder-candidate-title">
+                            주변 식당 후보
+                          </h4>
+                  
+                          <p class="ladder-candidate-description">
+                            사다리에 넣을 후보를 선택해 주세요.
+                          </p>
+                  
+                          <ul
+                            id="ladder-candidate-list"
+                            class="ladder-candidate-list"
+                          ></ul>
+                  
+                          <div class="ladder-candidate-actions">
+                            <button
+                              type="button"
+                              id="ladder-start-button"
+                              class="button button-primary"
+                            >
+                              사다리 시작
+                            </button>
+                  
+                            <button
+                              type="button"
+                              id="ladder-add-button"
+                              class="ladder-secondary-button"
+                            >
+                              + 후보
+                            </button>
+                          </div>
+                        </aside>
+                      </div>
+                    </div>
+                  </div>
                 <div
                   class="update-preview-detail"
                   data-preview-content="dice"
@@ -882,79 +1017,107 @@
             <span class="ui-badge">이벤트 혜택 안내</span>
           </article>
         </div>
-        <!-- ============ event - 혜택 배너 ============ -->
-        <div class="event-benefit-banner">
-          <div class="event-benefit-content">
-            <h3 class="event-benefit-heading">베타 참여자 전용 혜택</h3>
+       
+        <!-- ============ event - 하단 참여 영역 (담당: C) ============ -->
+<div class="event-bottom-layout">
+  <!-- 왼쪽: 혜택 + 베타 참여 -->
+  <div class="event-benefit-column">
+    <!-- ============ event - 혜택 배너 ============ -->
+    <div class="event-benefit-banner">
+      <div class="event-benefit-content">
+        <span class="ui-badge ui-badge-primary">
+          베타 참여자 전용 혜택
+        </span>
 
-            <p class="event-benefit-description">
-              베타기간 전 기능을 무료로 사용해 보세요!<br />
-              여기 링크로 체험 시 정식 출시 후 3개월 프리미엄 무료 이용권을
-              드립니다.
-            </p>
-          </div>
-        </div>
+        <h3 class="event-benefit-heading">
+          베타 기간, 먼저 경험해 보세요
+        </h3>
 
-        <!-- ============ event - 베타 신청 링크  ============ -->
-        <div class="event-cta-card">
-          <div class="event-cta-content"></div>
-
-          <a href="#" class="button button-primary">지금 베타 참여</a>
-        </div>
-
-        <!-- ============ event - 후기 폼 (담당: C) ============ -->
-        <div class="event-feedback-form">
-          <br />
-          <br />
-          <span class="ui-badge ui-badge-primary">스타벅스 쿠폰 이벤트!</span>
-          <h3 class="event-feedback-heading">솔직한 후기를 남겨주세요</h3>
-
-          <p class="event-feedback-description">
-            좋았던 점과 불편했던 점 모두 서비스 개선에 활용됩니다.
-          </p>
-
-          <form class="feedback-form">
-            <div class="form-group">
-              <label for="feedback-name" class="form-label">이름 (선택)</label>
-              <input
-                type="text"
-                id="feedback-name"
-                class="form-input"
-                placeholder="홍길동"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="feedback-email" class="form-label"
-                >이메일 (선택)</label
-              >
-              <input
-                type="email"
-                id="feedback-email"
-                class="form-input"
-                placeholder="example@email.com"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="feedback-message" class="form-label"
-                >후기 &amp; 피드백</label
-              >
-              <textarea
-                id="feedback-message"
-                class="form-textarea"
-                rows="4"
-                placeholder="출시가 된다면 사용할 의향이 있는지, 어떤 기능이 아쉬운지 솔직한 리뷰를 부탁드립니다."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="button button-primary">
-              후기 보내기
-            </button>
-          </form>
-        </div>
+        <p class="event-benefit-description">
+          베타 기간 전 기능을 무료로 사용해 보세요!<br />
+          여기 링크로 체험 시 정식 출시 후 3개월 프리미엄 무료 이용권을
+          드립니다.
+        </p>
       </div>
-    </section>
+
+      <!-- ============ event - 베타 신청 링크 ============ -->
+      <div class="event-cta-card">
+        <div class="event-cta-content">
+          <p class="event-cta-description">
+            지금 참여하고 서비스 개선에 필요한 의견을 들려주세요.
+          </p>
+        </div>
+
+        <a href="#feedback" class="button button-primary">
+          지금 베타 참여
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오른쪽: 후기 폼 -->
+  <div id="feedback" class="event-feedback-form">
+    <span class="ui-badge ui-badge-primary">
+      스타벅스 쿠폰 이벤트!
+    </span>
+
+    <h3 class="event-feedback-heading">
+      솔직한 후기를 남겨주세요
+    </h3>
+
+    <p class="event-feedback-description">
+      좋았던 점과 불편했던 점 모두 서비스 개선에 활용됩니다.
+    </p>
+
+    <form class="feedback-form">
+      <div class="form-group">
+        <label for="feedback-name" class="form-label">
+          이름 (선택)
+        </label>
+
+        <input
+          type="text"
+          id="feedback-name"
+          name="name"
+          class="form-input"
+          placeholder="홍길동"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-email" class="form-label">
+          이메일 (선택)
+        </label>
+
+        <input
+          type="email"
+          id="feedback-email"
+          name="email"
+          class="form-input"
+          placeholder="example@email.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-message" class="form-label">
+          후기 &amp; 피드백
+        </label>
+
+        <textarea
+          id="feedback-message"
+          name="message"
+          class="form-textarea"
+          rows="4"
+          placeholder="출시가 된다면 사용할 의향이 있는지, 어떤 기능이 아쉬운지 솔직한 리뷰를 부탁드립니다."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="button button-primary">
+        후기 보내기
+      </button>
+    </form>
+  </div>
+</div>
 
     <!-- ============ 전역 CTA (담당: A) ============ -->
     <aside
@@ -998,5 +1161,6 @@
     <script src="./js/menu.js"></script>
     <script src="./js/hero-menu-picker.js"></script>
     <script src="./js/sticky-cta.js"></script>
+    <script src="./js/ladder-game.js"></script>
   </body>
 </html>
