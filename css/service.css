@@ -130,3 +130,28 @@
   color: var(--color-text-muted, #6b6557);
 }
 
+
+/* --- 카드가 배경과 구분되도록: 테두리 진하게 + 옅은 그림자 + 위아래 여백 --- */
+.service-pain,
+.service-compare-item {
+  border-color: #ddd5c7;
+  box-shadow: 0 2px 10px rgba(19, 15, 9, 0.06);
+}
+
+.service-pain {
+  gap: var(--space-3, 12px);
+  padding: 40px 36px;
+}
+
+.service-pain-list {
+  gap: var(--space-6, 24px);
+}
+
+.service-compare-item {
+  padding: 36px 28px;
+}
+
+.service-compare-item-good {
+  border-color: var(--color-primary-border, rgba(249, 115, 22, 0.3));
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.12);
+}

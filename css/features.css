@@ -1079,3 +1079,84 @@
     transform: translateX(-50%);
   }
 }
+
+/* ---------- 카드가 배경과 구분되도록 (B 카드 공통) ---------- */
+.features-card,
+.features-merit,
+.features-flow-step,
+.features-more-card {
+  border-color: #ddd5c7;
+  box-shadow: 0 2px 10px rgba(19, 15, 9, 0.06);
+}
+
+/* How It Works: 카드 위아래 여백과 카드 사이 간격 넓히기 */
+.features-flow {
+  gap: var(--space-12, 48px);
+}
+
+.features-flow-step {
+  padding: 44px 40px;
+}
+
+.features-flow-step:not(.features-flow-step-last)::after {
+  bottom: -33px;
+}
+
+.features-merit,
+.features-more-card {
+  padding: 36px 32px;
+}
+
+/* ---------- 위치 기반 섹션: 배경과 구분 + 여백 ---------- */
+.location-image,
+.location-naver-map {
+  border-color: #ddd5c7;
+  box-shadow: 0 4px 16px rgba(19, 15, 9, 0.07);
+}
+
+.location-list {
+  gap: var(--space-3, 12px);
+}
+
+.location-list-item {
+  padding: 16px 20px;
+  border-color: #ddd5c7;
+  box-shadow: 0 1px 4px rgba(19, 15, 9, 0.05);
+}
+
+.location-detail {
+  margin-top: var(--space-5, 20px);
+  padding: 28px 28px 24px;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.1);
+}
+
+.location-points {
+  gap: var(--space-8, 32px);
+}
+
+.location-point {
+  padding: var(--space-2, 8px) 0 var(--space-2, 8px) var(--space-6, 24px);
+}
+
+.location-closing {
+  margin-top: var(--space-16, 64px);
+}
+
+/* ---------- 동작 설명 탭 / 전후 박스 ---------- */
+.features-how {
+  border-color: #ddd5c7;
+  box-shadow: 0 2px 10px rgba(19, 15, 9, 0.06);
+}
+
+.features-how-step {
+  padding: 24px 22px;
+  border: 1px solid #e3dccf;
+}
+
+.features-solve-row {
+  border-color: #ddd5c7;
+}
+
+.features-solve-row-good {
+  border-color: var(--color-primary-border, rgba(249, 115, 22, 0.3));
+}
