@@ -362,4 +362,35 @@
   .event-benefit-column .event-benefit-banner {
     min-height: auto;
   }
+}/* ============================================================
+   EVENT | Step 아이콘
+   ============================================================ */
+
+.event-step-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.event-step-icon svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+.event-step-icon svg rect,
+.event-step-icon svg circle,
+.event-step-icon svg path {
+  fill: none;
+  stroke: currentColor;
 }

@@ -1,23 +1,3 @@
-const ladderMenuInput = document.querySelector(
-  "#ladder-menu-input"
-);
-
-const ladderCreateButton = document.querySelector(
-  "#ladder-create-button"
-);
-
-const ladderStartButton = document.querySelector(
-  "#ladder-start-button"
-);
-
-const ladderResetButton = document.querySelector(
-  "#ladder-reset-button"
-);
-
-const ladderAddButton = document.querySelector(
-  "#ladder-add-button"
-);
-
 const ladderBoard = document.querySelector(
   "#ladder-board"
 );
@@ -28,6 +8,22 @@ const ladderResult = document.querySelector(
 
 const ladderCandidateList = document.querySelector(
   "#ladder-candidate-list"
+);
+
+const ladderStartButton = document.querySelector(
+  "#ladder-start-button"
+);
+
+const ladderAddButton = document.querySelector(
+  "#ladder-add-button"
+);
+
+const ladderResetButton = document.querySelector(
+  "#ladder-reset-button"
+);
+
+const ladderShareButton = document.querySelector(
+  "#ladder-share-button"
 );
 
 const defaultRestaurants = [
@@ -43,41 +39,50 @@ let ladderRungs = [];
 let winnerIndex = null;
 let ladderStarted = false;
 
-function getInputRestaurants() {
-  return ladderMenuInput.value
-    .split(",")
-    .map((restaurant) => restaurant.trim())
-    .filter((restaurant) => restaurant !== "");
-}
-
 function renderCandidateList(restaurants) {
+  if (!ladderCandidateList) {
+    return;
+  }
+
   ladderCandidateList.innerHTML = "";
 
   restaurants.forEach((restaurant, index) => {
     const listItem = document.createElement("li");
 
-    listItem.innerHTML = `
-      <label>
-        <input
-          type="checkbox"
-          value="${restaurant}"
-          data-candidate-index="${index}"
-          checked
-        />
-        <span>${restaurant}</span>
-      </label>
-    `;
+    const label = document.createElement("label");
+    label.className = "ladder-candidate-label";
 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = restaurant;
+    checkbox.checked = true;
+    checkbox.dataset.candidateIndex = index;
+
+    const text = document.createElement("span");
+    text.textContent = restaurant;
+
+    label.append(checkbox, text);
+    listItem.append(label);
     ladderCandidateList.append(listItem);
+
+    checkbox.addEventListener("change", () => {
+      resetLadderState();
+    });
   });
 }
 
 function getCheckedRestaurants() {
-  return Array.from(
-    ladderCandidateList.querySelectorAll(
-      "input[type='checkbox']:checked"
-    )
-  ).map((checkbox) => checkbox.value);
+  if (!ladderCandidateList) {
+    return [];
+  }
+
+  const checkedInputs = ladderCandidateList.querySelectorAll(
+    "input[type='checkbox']:checked"
+  );
+
+  return Array.from(checkedInputs).map(
+    (checkbox) => checkbox.value
+  );
 }
 
 function createRungs(count) {
@@ -86,13 +91,15 @@ function createRungs(count) {
 
   for (let row = 0; row < rowCount; row += 1) {
     for (let column = 0; column < count - 1; column += 1) {
+      const previousRung = rungs.find(
+        (rung) =>
+          rung.row === row &&
+          rung.column === column - 1
+      );
+
       const canCreate =
-        Math.random() > 0.52 &&
-        !rungs.some(
-          (rung) =>
-            rung.row === row &&
-            rung.column === column - 1
-        );
+        Math.random() > 0.5 &&
+        !previousRung;
 
       if (canCreate) {
         rungs.push({
@@ -106,8 +113,10 @@ function createRungs(count) {
   return rungs;
 }
 
-function getDestinationIndex(startIndex) {
+function getPathData(startIndex) {
   let currentColumn = startIndex;
+  const visitedColumns = [startIndex];
+  const visitedRungs = [];
 
   for (let row = 0; row < 7; row += 1) {
     const rightRung = ladderRungs.find(
@@ -123,17 +132,33 @@ function getDestinationIndex(startIndex) {
     );
 
     if (rightRung) {
+      visitedRungs.push(rightRung);
       currentColumn += 1;
-    } else if (leftRung) {
+      visitedColumns.push(currentColumn);
+      continue;
+    }
+
+    if (leftRung) {
+      visitedRungs.push(leftRung);
       currentColumn -= 1;
+      visitedColumns.push(currentColumn);
     }
   }
 
-  return currentColumn;
+  return {
+    destinationIndex: currentColumn,
+    visitedColumns,
+    visitedRungs,
+  };
 }
 
 function createBoard(count) {
+  if (!ladderBoard) {
+    return;
+  }
+
   ladderBoard.innerHTML = "";
+
   ladderBoard.style.setProperty(
     "--ladder-count",
     count
@@ -143,27 +168,28 @@ function createBoard(count) {
   startRow.className = "ladder-start-row";
 
   selectedRestaurants.forEach((restaurant, index) => {
-    const button = document.createElement("button");
+    const startButton = document.createElement("button");
 
-    button.type = "button";
-    button.className = "ladder-start-button";
-    button.textContent = restaurant;
-    button.dataset.startIndex = index;
+    startButton.type = "button";
+    startButton.className = "ladder-start-button";
+    startButton.textContent = restaurant;
+    startButton.dataset.startIndex = index;
 
-    button.addEventListener("click", () => {
+    startButton.addEventListener("click", () => {
       if (!ladderStarted) {
-        ladderResult.textContent =
-          "먼저 사다리 시작 버튼을 눌러 주세요.";
+        if (ladderResult) {
+          ladderResult.textContent =
+            "먼저 사다리 시작 버튼을 눌러 주세요.";
+        }
+
         return;
       }
 
       playLadder(index);
     });
 
-    startRow.append(button);
+    startRow.append(startButton);
   });
-
-  ladderBoard.append(startRow);
 
   const lines = document.createElement("div");
   lines.className = "ladder-lines";
@@ -173,8 +199,13 @@ function createBoard(count) {
 
     verticalLine.className = "ladder-vertical-line";
     verticalLine.dataset.column = index;
-    verticalLine.style.left =
-      `${(index / (count - 1)) * 100}%`;
+
+    const position =
+      count === 1
+        ? 50
+        : (index / (count - 1)) * 100;
+
+    verticalLine.style.left = `${position}%`;
 
     lines.append(verticalLine);
   });
@@ -192,31 +223,29 @@ function createBoard(count) {
     const widthPercent =
       100 / (count - 1);
 
-    rungElement.style.top =
-      `${((rung.row + 1) / 8) * 100}%`;
+    const topPercent =
+      ((rung.row + 1) / 8) * 100;
 
-    rungElement.style.left =
-      `${leftPercent}%`;
-
-    rungElement.style.width =
-      `${widthPercent}%`;
+    rungElement.style.left = `${leftPercent}%`;
+    rungElement.style.width = `${widthPercent}%`;
+    rungElement.style.top = `${topPercent}%`;
 
     lines.append(rungElement);
   });
 
   const cover = document.createElement("div");
-  cover.className = "ladder-cover";
+
   cover.id = "ladder-cover";
+  cover.className = "ladder-cover";
   cover.innerHTML =
     "사다리 시작 전<br />결과를 가리고 있어요";
 
   lines.append(cover);
-  ladderBoard.append(lines);
 
   const resultRow = document.createElement("div");
   resultRow.className = "ladder-result-row";
 
-  selectedRestaurants.forEach((restaurant, index) => {
+  selectedRestaurants.forEach((_, index) => {
     const resultLabel = document.createElement("span");
 
     resultLabel.className = "ladder-result-label";
@@ -226,34 +255,66 @@ function createBoard(count) {
     resultRow.append(resultLabel);
   });
 
-  ladderBoard.append(resultRow);
+  ladderBoard.append(startRow, lines, resultRow);
+}
+
+function resetPathStyles() {
+  document
+    .querySelectorAll(
+      ".ladder-start-button.is-selected, " +
+        ".ladder-vertical-line.is-path, " +
+        ".ladder-rung.is-path, " +
+        ".ladder-result-label.is-winner"
+    )
+    .forEach((element) => {
+      element.classList.remove(
+        "is-selected",
+        "is-path",
+        "is-winner"
+      );
+    });
 }
 
 function resetLadderState() {
   ladderStarted = false;
-  winnerIndex = null;
   ladderRungs = [];
+  winnerIndex = null;
 
-  ladderResult.textContent =
-    "오른쪽 후보를 선택한 뒤 사다리 시작 버튼을 눌러 주세요.";
+  if (ladderShareButton) {
+    ladderShareButton.hidden = true;
+    ladderShareButton.dataset.result = "";
+    ladderShareButton.textContent = "결과 공유하기";
+  }
 
-  ladderBoard.innerHTML = `
-    <p class="ladder-board-guide">
-      오른쪽 후보를 선택한 뒤 사다리 시작 버튼을 눌러 주세요.
-    </p>
-  `;
+  if (ladderBoard) {
+    ladderBoard.innerHTML = `
+      <p class="ladder-board-guide">
+        오른쪽 후보를 선택한 뒤<br />
+        사다리 시작 버튼을 눌러보세요.
+      </p>
+    `;
+  }
+
+  if (ladderResult) {
+    ladderResult.textContent =
+      "오른쪽 후보를 선택한 뒤 사다리 시작 버튼을 눌러 주세요.";
+  }
 }
 
-function buildLadder() {
+function startLadder() {
   selectedRestaurants = getCheckedRestaurants();
 
   if (selectedRestaurants.length < 2) {
-    ladderResult.textContent =
-      "후보를 두 개 이상 선택해 주세요.";
+    if (ladderResult) {
+      ladderResult.textContent =
+        "후보를 두 개 이상 선택해 주세요.";
+    }
+
     return;
   }
 
-  ladderStarted = false;
+  ladderStarted = true;
+
   winnerIndex = Math.floor(
     Math.random() * selectedRestaurants.length
   );
@@ -263,19 +324,6 @@ function buildLadder() {
   );
 
   createBoard(selectedRestaurants.length);
-
-  ladderResult.textContent =
-    "아직 결과가 가려져 있어요. 사다리를 시작해 보세요.";
-}
-
-function startLadder() {
-  if (selectedRestaurants.length < 2) {
-    ladderResult.textContent =
-      "먼저 후보를 두 개 이상 선택해 주세요.";
-    return;
-  }
-
-  ladderStarted = true;
 
   const cover = document.querySelector(
     "#ladder-cover"
@@ -294,68 +342,80 @@ function startLadder() {
       index === winnerIndex ? "당첨" : "꽝";
   });
 
-  ladderResult.textContent =
-    "위의 후보 중 하나를 클릭해 결과를 확인해 보세요.";
+  if (ladderResult) {
+    ladderResult.textContent =
+      "위의 후보 중 하나를 눌러 결과를 확인해 보세요.";
+  }
+
+  if (ladderShareButton) {
+    ladderShareButton.hidden = true;
+  }
 }
 
 function playLadder(startIndex) {
-  const destinationIndex =
-    getDestinationIndex(startIndex);
+  if (!ladderStarted) {
+    return;
+  }
 
-  const startButton = document.querySelector(
+  const pathData = getPathData(startIndex);
+
+  const selectedButton = document.querySelector(
     `[data-start-index="${startIndex}"]`
   );
 
   const resultLabel = document.querySelector(
-    `[data-result-index="${destinationIndex}"]`
+    `[data-result-index="${pathData.destinationIndex}"]`
   );
 
-  document
-    .querySelectorAll(".is-selected, .is-path, .is-winner")
-    .forEach((element) => {
-      element.classList.remove(
-        "is-selected",
-        "is-path",
-        "is-winner"
-      );
-    });
+  resetPathStyles();
 
-  startButton.classList.add("is-selected");
-  resultLabel.classList.add("is-winner");
-
-  const verticalLines = document.querySelectorAll(
-    ".ladder-vertical-line"
-  );
-
-  verticalLines[destinationIndex].classList.add(
-    "is-path"
-  );
-
-  const destinationRestaurant =
-    selectedRestaurants[destinationIndex];
-
-  const resultText =
-    destinationIndex === winnerIndex
-      ? `축하해요! ${destinationRestaurant}이(가) 당첨됐어요!`
-      : `아쉽지만 ${destinationRestaurant}은(는) 꽝이에요.`;
-
-  ladderResult.textContent = resultText;
-}
-
-function loadCandidatesFromInput() {
-  const restaurants = getInputRestaurants();
-
-  if (restaurants.length < 2) {
-    ladderResult.textContent =
-      "식당 후보를 두 개 이상 입력해 주세요.";
-    return;
+  if (selectedButton) {
+    selectedButton.classList.add("is-selected");
   }
 
-  renderCandidateList(restaurants);
-  resetLadderState();
+  pathData.visitedColumns.forEach((column) => {
+    const verticalLine = document.querySelector(
+      `.ladder-vertical-line[data-column="${column}"]`
+    );
 
-  ladderResult.textContent =
-    "후보를 선택한 뒤 사다리를 만들어 보세요.";
+    if (verticalLine) {
+      verticalLine.classList.add("is-path");
+    }
+  });
+
+  pathData.visitedRungs.forEach((rung) => {
+    const rungElement = document.querySelector(
+      `.ladder-rung[data-row="${rung.row}"][data-column="${rung.column}"]`
+    );
+
+    if (rungElement) {
+      rungElement.classList.add("is-path");
+    }
+  });
+
+  if (resultLabel) {
+    resultLabel.classList.add("is-winner");
+  }
+
+  const winnerRestaurant =
+    selectedRestaurants[winnerIndex];
+
+  const isWinner =
+    pathData.destinationIndex === winnerIndex;
+
+  if (ladderResult) {
+    ladderResult.textContent = isWinner
+      ? `축하해요! 오늘의 식당은 ${winnerRestaurant}입니다.`
+      : "아쉽지만 꽝이에요. 다른 후보도 눌러보세요.";
+  }
+
+  if (ladderShareButton) {
+    ladderShareButton.hidden = false;
+
+    ladderShareButton.dataset.result = isWinner
+      ? `오늘의 식당은 ${winnerRestaurant}입니다!`
+      : "오늘의 메뉴 사다리타기를 해봤어요!";
+  }
 }
 
 function addCandidate() {
@@ -367,35 +427,84 @@ function addCandidate() {
     return;
   }
 
-  const restaurants = getInputRestaurants();
+  const currentRestaurants = Array.from(
+    ladderCandidateList.querySelectorAll(
+      "input[type='checkbox']"
+    )
+  ).map((checkbox) => checkbox.value);
 
-  restaurants.push(restaurant.trim());
+  currentRestaurants.push(restaurant.trim());
 
-  ladderMenuInput.value =
-    restaurants.join(", ");
-
-  renderCandidateList(restaurants);
+  renderCandidateList(currentRestaurants);
   resetLadderState();
+
+  if (ladderResult) {
+    ladderResult.textContent =
+      "후보가 추가됐어요. 원하는 후보를 선택한 뒤 사다리 시작을 눌러 주세요.";
+  }
 }
 
-ladderCreateButton.addEventListener(
-  "click",
-  loadCandidatesFromInput
-);
+async function shareResult() {
+  if (!ladderShareButton) {
+    return;
+  }
 
-ladderStartButton.addEventListener(
-  "click",
-  startLadder
-);
+  const shareText =
+    ladderShareButton.dataset.result ||
+    "오늘의 메뉴 사다리타기를 해봤어요!";
 
-ladderResetButton.addEventListener(
-  "click",
-  resetLadderState
-);
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "오늘은 뭐 먹지",
+        text: shareText,
+      });
 
-ladderAddButton.addEventListener(
-  "click",
-  addCandidate
-);
+      return;
+    }
+
+    await navigator.clipboard.writeText(shareText);
+
+    ladderShareButton.textContent = "결과 복사 완료";
+
+    setTimeout(() => {
+      ladderShareButton.textContent = "결과 공유하기";
+    }, 1800);
+  } catch (error) {
+    console.log(
+      "공유가 취소되었거나 복사에 실패했습니다.",
+      error
+    );
+  }
+}
+
+if (ladderStartButton) {
+  ladderStartButton.addEventListener(
+    "click",
+    startLadder
+  );
+}
+
+if (ladderAddButton) {
+  ladderAddButton.addEventListener(
+    "click",
+    addCandidate
+  );
+}
+
+if (ladderResetButton) {
+  ladderResetButton.addEventListener(
+    "click",
+    resetLadderState
+  );
+}
+
+if (ladderShareButton) {
+  ladderShareButton.addEventListener(
+    "click",
+    shareResult
+  );
+}
 
 renderCandidateList(defaultRestaurants);
+resetLadderState();
