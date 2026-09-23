@@ -184,6 +184,17 @@
   background: var(--color-surface-dark);
 }
 
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.feedback-form > .button {
+  align-self: flex-end;
+}
+
 .event-feedback-heading {
   margin: 0;
   color: var(--color-text-on-dark);
@@ -347,6 +358,279 @@
   justify-content: center;
 }
 
+/* ---------- 프리미엄 베타 혜택 카드 강조 ---------- */
+
+/* 바깥 카드 크기는 기존 grid/flex 구조를 그대로 사용합니다. */
+.event-benefit-column .event-benefit-banner--premium {
+  position: relative;
+  align-items: stretch;
+  overflow: hidden;
+  border-color: rgba(249, 115, 22, 0.44);
+  background:
+    radial-gradient(
+      circle at 54% 94%,
+      rgba(249, 115, 22, 0.2),
+      transparent 36%
+    ),
+    linear-gradient(
+      155deg,
+      var(--color-primary-soft) 0%,
+      var(--color-surface-dark) 75%
+    );
+}
+
+.event-benefit-column .event-benefit-banner--premium::before {
+  position: absolute;
+  top: 0;
+  left: -42%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+  transform: skewX(-20deg);
+  animation: event-premium-card-shine 5s ease-in-out infinite;
+}
+
+.event-benefit-column .event-benefit-banner--premium .event-benefit-content,
+.event-benefit-column .event-benefit-banner--premium .event-cta-card {
+  position: relative;
+  z-index: 1;
+}
+
+.event-benefit-column .event-benefit-banner--premium .ui-badge {
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  background: rgba(249, 115, 22, 0.14);
+  color: #ffb57a;
+  font-size: 13px;
+}
+
+.event-benefit-column .event-benefit-banner--premium .event-benefit-content {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.event-benefit-column .event-benefit-banner--premium .event-benefit-heading {
+  max-width: 360px;
+  font-size: clamp(30px, 3.25vw, 42px);
+  letter-spacing: -0.07em;
+  line-height: 1.2;
+}
+
+.event-benefit-column .event-benefit-banner--premium .event-benefit-description {
+  max-width: 330px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.event-benefit-column .event-cta-card--premium {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(249, 115, 22, 0.28);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.event-benefit-column .event-cta-content--premium {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-cta-sparkles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  color: var(--color-primary);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.event-cta-sparkles span {
+  animation: event-premium-sparkle 1.8s ease-in-out infinite;
+}
+
+.event-cta-sparkles span:nth-child(2) {
+  font-size: 25px;
+  animation-delay: 0.2s;
+}
+
+.event-cta-sparkles span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.event-cta-meter {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.event-cta-meter-fill {
+  display: block;
+  width: 80%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    #ffd2ad,
+    var(--color-primary)
+  );
+  background-size: 200% 100%;
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.7);
+  animation: event-premium-meter-sweep 2.4s linear infinite;
+}
+
+.event-cta-meter-dot {
+  position: absolute;
+  top: 50%;
+  left: calc(80% - 8px);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffb16e;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+  transform: translateY(-50%);
+  animation: event-premium-meter-dot 1.6s ease-in-out infinite;
+}
+
+/* ---------- Bootstrap 모달: 이벤트 섹션 톤과 맞춤 ---------- */
+
+.event-modal .modal-content {
+  border: 1px solid rgba(249, 115, 22, 0.38);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-dark);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.48);
+  color: var(--color-text-on-dark);
+}
+
+.event-modal .modal-header,
+.event-modal .modal-footer {
+  border-color: var(--color-border-dark);
+}
+
+.event-modal .modal-header {
+  align-items: flex-start;
+  padding: var(--space-5) var(--space-6);
+}
+
+.event-modal .modal-body {
+  padding: var(--space-5) var(--space-6);
+}
+
+.event-modal .modal-footer {
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+}
+
+.event-modal-eyebrow {
+  margin: 0 0 var(--space-1);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.event-modal .modal-title {
+  color: var(--color-text-on-dark);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.event-modal-close {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+.event-modal-description,
+.event-modal-confirmation {
+  margin: 3;
+  color: var(--color-text-on-dark-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.event-modal-field + .event-modal-field {
+  margin-top: var(--space-4);
+}
+
+.event-modal-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-on-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.event-modal-input.form-control {
+  min-height: 46px;
+  border-color: var(--color-border-dark);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-dark);
+  color: var(--color-text-on-dark);
+}
+
+.event-modal-input.form-control:focus {
+  border-color: var(--color-primary);
+  background: var(--color-surface-dark);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.16);
+  color: var(--color-text-on-dark);
+}
+
+.event-benefit-column .event-cta-card--premium .button {
+  position: relative;
+  z-index: 1;
+  min-height: 54px;
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.24);
+}
+
+@keyframes event-premium-card-shine {
+  0%,
+  76% {
+    left: -42%;
+  }
+
+  100% {
+    left: 115%;
+  }
+}
+
+@keyframes event-premium-sparkle {
+  50% {
+    opacity: 0.38;
+    transform: translateY(3px) scale(0.76);
+  }
+}
+
+@keyframes event-premium-meter-sweep {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes event-premium-meter-dot {
+  50% {
+    box-shadow: 0 0 0 8px rgba(249, 115, 22, 0);
+    transform: translateY(-50%) scale(0.86);
+  }
+}
+
 /* 오른쪽 후기 폼: 좌우 배치에서는 상단 여백 제거 */
 .event-bottom-layout .event-feedback-form {
   min-width: 0;
@@ -361,6 +645,10 @@
 
   .event-benefit-column .event-benefit-banner {
     min-height: auto;
+  }
+
+  .feedback-form > .button {
+    align-self: stretch;
   }
 }/* ============================================================
    EVENT | Step 아이콘

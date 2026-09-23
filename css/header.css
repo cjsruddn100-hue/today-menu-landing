@@ -105,9 +105,23 @@
 .header-sticky-cta-copy {
   margin: 0;
   color: var(--color-text-on-dark);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.03em;
+  animation: header-sticky-cta-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes header-sticky-cta-blink {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: none;
+  }
+
+  50% {
+    opacity: 0.55;
+    text-shadow: 0 0 14px rgba(249, 115, 22, 0.72);
+  }
 }
 
 .header-sticky-cta-button {
@@ -185,5 +199,11 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-sticky-cta-copy {
+    animation: none;
   }
 }

@@ -9,6 +9,13 @@
     />
     <title>오늘은 뭐먹지 | 오늘 점심, 딱 한 곳만 고를게요</title>
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
     <!-- 공통 스타일 (모두 같이 씀 / 임의 변경 금지) -->
     <link rel="stylesheet" href="./css/common.css" />
     <!-- A 담당 -->
@@ -70,9 +77,14 @@
             첫 선택지를 던져드릴게요.
           </p>
           <div class="hero-actions">
-            <a class="button-primary hero-cta" href="#event"
-              >베타 무료버전 미리보기</a
+            <a
+              class="button-primary hero-cta"
+              href="https://www.xn--wh1bs8l5xa003avkb15g.com/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
+              베타 무료버전 미리보기
+            </a>
           </div>
           <p class="hero-note">무료버전 먼저 체험 하시고, 3개월 프리미엄 신청하세요.</p>
         </div>
@@ -1038,7 +1050,7 @@
           </h2>
 
           <p class="section-description section-description-dark">
-            지금 이 링크를 통해 베타 서비스에 참여하면, 정식 출시 후 3개월
+            오직 이 페이지에서만 3개월
             프리미엄 무료 이용권을 드립니다.
           </p>
         </div>
@@ -1061,10 +1073,10 @@
             <h3 class="event-step-title">베타 신청 등록</h3>
 
             <p class="event-step-description">
-              이 페이지의 베타 전용 링크를 통해 곧바로 서비스를 이용해 보세요.
+             오직 이 페이지에서 이메일 등록을 통해 프리미엄 무료 이용권 받아보세요.
             </p>
 
-            <span class="ui-badge">이 링크로만 가능</span>
+            <span class="ui-badge">무료 이용권 받기</span>
           </article>
 
           <article class="event-step-card">
@@ -1150,33 +1162,43 @@
   <!-- 왼쪽: 혜택 + 베타 참여 -->
   <div class="event-benefit-column">
     <!-- ============ event - 혜택 배너 ============ -->
-    <div class="event-benefit-banner">
+    <div class="event-benefit-banner event-benefit-banner--premium">
       <div class="event-benefit-content">
         <span class="ui-badge ui-badge-primary">
           베타 참여자 전용 혜택
         </span>
 
         <h3 class="event-benefit-heading">
-          베타 기간, 먼저 경험해 보세요
+          프리미엄 등급 무료 API 받기
         </h3>
 
         <p class="event-benefit-description">
-          베타 기간 전 기능을 무료로 사용해 보세요!<br />
-          여기 링크로 체험 시 정식 출시 후 3개월 프리미엄 무료 이용권을
-          드립니다.
+          복잡한 메뉴 선정에 지친 당신을 위해<br />
+          프리미엄 API를 무료로 제공합니다.
         </p>
       </div>
 
       <!-- ============ event - 베타 신청 링크 ============ -->
-      <div class="event-cta-card">
-        <div class="event-cta-content">
-          <p class="event-cta-description">
-            지금 참여하고 서비스 개선에 필요한 의견을 들려주세요.
-          </p>
+      <div class="event-cta-card event-cta-card--premium">
+        <div class="event-cta-content event-cta-content--premium" aria-hidden="true">
+          <div class="event-cta-sparkles">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+          </div>
+
+          <div class="event-cta-meter">
+            <span class="event-cta-meter-fill"></span>
+            <span class="event-cta-meter-dot"></span>
+          </div>
         </div>
 
-        <a href="#feedback" class="button button-primary">
-          지금 베타 참여
+        <a
+          href="#beta-register-modal"
+          class="button button-primary"
+          data-bs-toggle="modal"
+        >
+          프리미엄 등급 무료 API 받기
         </a>
       </div>
     </div>
@@ -1185,11 +1207,11 @@
   <!-- 오른쪽: 후기 폼 -->
   <div id="feedback" class="event-feedback-form">
     <span class="ui-badge ui-badge-primary">
-      스타벅스 쿠폰 이벤트!
+      기프티콘 리뷰 이벤트!
     </span>
 
     <h3 class="event-feedback-heading">
-      솔직한 후기를 남겨주세요
+      솔직한 리뷰를 남겨주세요
     </h3>
 
     <p class="event-feedback-description">
@@ -1199,7 +1221,7 @@
     <form class="feedback-form">
       <div class="form-group">
         <label for="feedback-name" class="form-label">
-          이름 (선택)
+          이름 
         </label>
 
         <input
@@ -1213,7 +1235,7 @@
 
       <div class="form-group">
         <label for="feedback-email" class="form-label">
-          이메일 (선택)
+          이메일 
         </label>
 
         <input
@@ -1239,12 +1261,121 @@
         ></textarea>
       </div>
 
-      <button type="submit" class="button button-primary">
+      <button
+        type="button"
+        class="button button-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#feedback-confirm-modal"
+      >
         후기 보내기
       </button>
     </form>
   </div>
 </div>
+
+    <!-- ============ 베타 등록 모달 ============ -->
+    <div
+      class="modal fade event-modal"
+      id="beta-register-modal"
+      tabindex="-1"
+      aria-labelledby="beta-register-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div>
+              <p class="event-modal-eyebrow">BETA REGISTRATION</p>
+              <h2 class="modal-title fs-5" id="beta-register-modal-title">
+                베타 신청 정보 등록
+              </h2>
+            </div>
+            <button
+              type="button"
+              class="btn-close event-modal-close"
+              data-bs-dismiss="modal"
+              aria-label="닫기"
+            ></button>
+          </div>
+
+          <form id="beta-register-form" novalidate>
+            <div class="modal-body">
+              <p class="event-modal-description">
+                등록하신 이메일로 프리미엄 등급 무료 API를 보내드립니다.
+              </p>
+
+              <div class="event-modal-field">
+                <label for="beta-name" class="event-modal-label">이름</label>
+                <input
+                  type="text"
+                  id="beta-name"
+                  name="beta-name"
+                  class="form-control event-modal-input"
+                  autocomplete="name"
+                  required
+                />
+                <div class="invalid-feedback">이름을 입력해 주세요.</div>
+              </div>
+
+              <div class="event-modal-field">
+                <label for="beta-email" class="event-modal-label">이메일</label>
+                <input
+                  type="email"
+                  id="beta-email"
+                  name="beta-email"
+                  class="form-control event-modal-input"
+                  autocomplete="email"
+                  required
+                />
+                <div class="invalid-feedback">올바른 이메일 주소를 입력해 주세요.</div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="button-secondary" data-bs-dismiss="modal">
+                취소
+              </button>
+              <button type="submit" class="button button-primary">등록하기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 후기 등록 확인 모달 ============ -->
+    <div
+      class="modal fade event-modal"
+      id="feedback-confirm-modal"
+      tabindex="-1"
+      aria-labelledby="feedback-confirm-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="feedback-confirm-modal-title">
+              후기 등록 확인
+            </h2>
+            <button
+              type="button"
+              class="btn-close event-modal-close"
+              data-bs-dismiss="modal"
+              aria-label="닫기"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="event-modal-confirmation">
+              후기 등록 확인 되었습니다. 소중한 리뷰 감사합니다.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button button-primary" data-bs-dismiss="modal">
+              확인
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ============ 전역 CTA (담당: A) ============ -->
     <aside
@@ -1255,7 +1386,7 @@
     >
       <div class="header-sticky-cta-inner page-container">
         <p class="header-sticky-cta-copy">
-          베타로 먼저 써보고, 7일 이용 후 의견을 남겨주시면 추가 혜택 제공됩니다.
+          3개월 프리미엄 무료 이용 후 리뷰를 남겨주시면 추가 혜택이 제공됩니다!
         </p>
         <a class="button-primary header-sticky-cta-button" href="#event"
           >3개월 프리미엄 무료로 시작하기 <span aria-hidden="true">→</span></a
@@ -1287,5 +1418,11 @@
     <script src="./js/hero-menu-picker.js"></script>
     <script src="./js/sticky-cta.js"></script>
     <script src="./js/ladder-game.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/event-modals.js"></script>
   </body>
 </html>
