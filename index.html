@@ -826,7 +826,7 @@
         </button>
       </article>
     </div>
-  
+
     <!-- 미리보기 전체 패널 -->
      <!-- UPDATE 카드 하단 기본 안내 -->
 <div class="update-coming-soon-note">
@@ -879,16 +879,16 @@
                 <span class="ladder-game-kicker">
                   LADDER GAME PREVIEW
                 </span>
-          
+
                 <h4 class="ladder-game-card-title">
                   오늘의 식당을 사다리로 정해보세요
                 </h4>
-          
+
                 <p class="ladder-game-card-description">
                   오른쪽 후보를 선택한 뒤 사다리 시작 버튼을 눌러 주세요.
                 </p>
               </div>
-          
+
               <button
                 type="button"
                 id="ladder-reset-button"
@@ -897,14 +897,14 @@
                 다시 선택
               </button>
             </div>
-          
+
             <div class="ladder-game-grid">
               <!-- 왼쪽 사다리 보드 -->
               <div class="ladder-visual-card">
                 <div class="ladder-visual-caption">
                   사다리 게임 미리보기
                 </div>
-          
+
                 <div
                   id="ladder-board"
                   class="ladder-board"
@@ -915,14 +915,14 @@
                     사다리 시작 버튼을 눌러보세요.
                   </p>
                 </div>
-          
+
                 <div class="ladder-result-area">
                   <p
                     id="ladder-game-result"
                     class="ladder-game-result"
                     aria-live="polite"
                   ></p>
-          
+
                   <button
                     type="button"
                     id="ladder-share-button"
@@ -933,26 +933,26 @@
                   </button>
                 </div>
               </div>
-          
+
               <!-- 오른쪽 후보 선택 -->
               <aside class="ladder-candidate-card">
                 <span class="ladder-candidate-kicker">
                   NEARBY RESTAURANTS
                 </span>
-          
+
                 <h4 class="ladder-candidate-title">
                   주변 식당 후보
                 </h4>
-          
+
                 <p class="ladder-candidate-description">
                   사다리에 넣을 후보를 선택해 주세요.
                 </p>
-          
+
                 <ul
                   id="ladder-candidate-list"
                   class="ladder-candidate-list"
                 ></ul>
-          
+
                 <div class="ladder-candidate-actions">
                   <button
                     type="button"
@@ -961,7 +961,7 @@
                   >
                     사다리 시작
                   </button>
-          
+
                   <button
                     type="button"
                     id="ladder-add-button"
@@ -977,66 +977,279 @@
 
         <!-- 주사위 미리보기 -->
         <div
-          class="update-preview-detail"
-          data-preview-content="dice"
-        >
-          <div class="update-preview-detail-header">
-            <div>
-              <span class="update-preview-detail-kicker">
-                COMING SOON
-              </span>
+        class="update-preview-detail"
+        data-preview-content="dice"
+      >
+        <div class="update-preview-detail-header">
+          <div>
+            <span class="update-preview-detail-kicker">
+              18 SURVIVAL BATTLE
+            </span>
 
-              <h3 class="update-preview-detail-title">
-                주사위 블랙잭
-              </h3>
-            </div>
+            <h3 class="update-preview-detail-title">
+              주사위 블랙잭
+            </h3>
 
-            <button
-              type="button"
-              class="update-preview-close"
-            >
-              닫기
-            </button>
+            <p class="update-preview-detail-description">
+              18을 넘지 않는 선에서 더 높은 점수를 만들어 보세요.
+              결과는 동료에게 공유할 수 있습니다.
+            </p>
           </div>
 
-          <div class="update-placeholder-card">
-            주사위 블랙잭 미리보기를 준비하고 있어요.
-          </div>
+          <button
+            type="button"
+            class="update-preview-close"
+          >
+            닫기
+          </button>
         </div>
 
-        <!-- 핀볼 미리보기 -->
-        <div
-          class="update-preview-detail"
-          data-preview-content="pinball"
-        >
-          <div class="update-preview-detail-header">
-            <div>
-              <span class="update-preview-detail-kicker">
-                COMING SOON
+        <div class="dice-game-card">
+          <div class="dice-game-rule">
+            <span class="dice-game-rule-badge">
+              RULE
+            </span>
+
+            <p>
+              주사위는 횟수 제한 없이 굴릴 수 있습니다.
+              단, 합계가 18을 넘으면 즉시 버스트입니다.
+            </p>
+          </div>
+
+          <div class="dice-solo-layout">
+            <section
+              id="dice-player-card"
+              class="dice-player-card is-active"
+            >
+              <span class="dice-player-label">
+                MY SCORE
               </span>
 
-              <h3 class="update-preview-detail-title">
-                근처 식당 핀볼
-              </h3>
-            </div>
+              <h4 class="dice-player-name">
+                18 서바이벌 도전
+              </h4>
+
+              <p
+                id="dice-player-status"
+                class="dice-player-status"
+              >
+                원하는 만큼 주사위를 굴려 보세요.
+              </p>
+
+              <div
+                id="dice-roll-list"
+                class="dice-roll-list"
+                aria-live="polite"
+              >
+                <span class="dice-roll-empty">
+                  아직 굴린 주사위가 없어요.
+                </span>
+              </div>
+
+              <strong
+                id="dice-score"
+                class="dice-score"
+              >
+                0
+              </strong>
+
+              <span class="dice-score-label">
+                CURRENT SCORE
+              </span>
+            </section>
+
+            <aside
+              id="dice-result-card"
+              class="dice-result-card"
+              aria-live="polite"
+            >
+              <span class="dice-result-kicker">
+                RESULT
+              </span>
+
+              <div class="dice-result-symbol">
+                🎲
+              </div>
+
+              <h4
+                id="dice-result-title"
+                class="dice-result-title"
+              >
+                아직 결과를 기다리고 있어요
+              </h4>
+
+              <p
+                id="dice-result-description"
+                class="dice-result-description"
+              >
+                18을 넘지 않는 범위에서 원하는 점수를 만든 뒤 결과를 확정해 보세요.
+              </p>
+
+              <p class="dice-share-guide">
+                결과 화면을 캡처해 동료에게 공유하세요!
+              </p>
+            </aside>
+          </div>
+
+          <div class="dice-game-controls">
+            <button
+              type="button"
+              id="dice-roll-button"
+              class="button button-primary"
+            >
+              주사위 굴리기
+            </button>
 
             <button
               type="button"
-              class="update-preview-close"
+              id="dice-finish-button"
+              class="dice-secondary-button"
             >
-              닫기
+              결과 확정
+            </button>
+
+            <button
+              type="button"
+              id="dice-share-button"
+              class="dice-share-button"
+              hidden
+            >
+              결과 공유하기
+            </button>
+
+            <button
+              type="button"
+              id="dice-reset-button"
+              class="dice-reset-button"
+            >
+              다시 시작
             </button>
           </div>
 
-          <div class="update-placeholder-card">
-            근처 식당 핀볼 미리보기를 준비하고 있어요.
-          </div>
+          <p
+            id="dice-game-message"
+            class="dice-game-message"
+            aria-live="polite"
+          >
+            주사위를 굴려 18에 가장 가까운 점수에 도전해 보세요.
+          </p>
+        </div>
+      </div>
+          <!-- 핀볼 미리보기 -->
+<div
+class="update-preview-detail"
+data-preview-content="pinball"
+>
+<div class="update-preview-detail-header">
+  <div>
+    <span class="update-preview-detail-kicker">
+      MENU PINBALL
+    </span>
+
+    <h3 class="update-preview-detail-title">
+      근처 식당 핀볼
+    </h3>
+
+    <p class="update-preview-detail-description">
+      후보 공을 지켜내세요.
+      마지막까지 남은 식당이 오늘의 선택입니다.
+    </p>
+  </div>
+
+  <button
+    type="button"
+    class="update-preview-close"
+  >
+    닫기
+  </button>
+</div>
+
+<div class="pinball-game">
+  <div class="pinball-top">
+    <span>MENU PINBALL</span>
+    <span id="pinball-alive">남은 후보 8개</span>
+  </div>
+
+  <div class="pinball-layout">
+    <!-- 왼쪽: Canvas 게임판 -->
+    <div class="pinball-playfield">
+      <canvas
+        id="pinball-canvas"
+        width="480"
+        height="600"
+        tabindex="0"
+        aria-label="메뉴 후보 공이 움직이는 핀볼 게임판"
+      ></canvas>
+    </div>
+
+    <!-- 오른쪽: 후보와 조작 -->
+    <aside class="pinball-side">
+      <span class="pinball-side-kicker">
+        NEARBY RESTAURANTS
+      </span>
+
+      <h4>식당 후보</h4>
+
+      <ul
+        id="pinball-candidates"
+        class="pinball-candidate-list"
+      ></ul>
+
+      <p
+        id="pinball-message"
+        class="pinball-message"
+        aria-live="polite"
+      >
+        시작을 누르면 메뉴 공 8개가 동시에 등장합니다.
+      </p>
+
+      <div class="pinball-actions">
+        <button
+          type="button"
+          id="pinball-start"
+        >
+          핀볼 시작
+        </button>
+
+        <button
+          type="button"
+          id="pinball-reset"
+        >
+          다시 시작
+        </button>
+      </div>
+
+      <p class="pinball-help">
+        A / D 키 또는 아래 버튼으로 공을 쳐 올리세요.
+      </p>
+
+      <div class="pinball-flipper-buttons">
+        <button
+          type="button"
+          id="pinball-left"
+        >
+          왼쪽 치기
+        </button>
+
+        <button
+          type="button"
+          id="pinball-right"
+        >
+          오른쪽 치기
+        </button>
+      </div>
+    </aside>
+  </div>
+</div>
+</div>
+
+
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 
     <!-- ============ event - 베타 이벤트 (담당: C) ============ -->
     <section id="event" class="page-section page-section-dark">
@@ -1066,7 +1279,7 @@
                   <path d="M33 14l3 3" />
                 </svg>
               </div>
-            
+
               <span class="event-step-number">STEP 01</span>
             </div>
 
@@ -1088,7 +1301,7 @@
                   <path d="M22 35h4" />
                 </svg>
               </div>
-            
+
               <span class="event-step-number">STEP 02</span>
             </div>
 
@@ -1110,7 +1323,7 @@
                   <path d="M21 25l10-10 4 4-10 10-5 1z" />
                 </svg>
               </div>
-            
+
               <span class="event-step-number">STEP 03</span>
             </div>
 
@@ -1130,20 +1343,20 @@
                 <svg viewBox="0 0 48 48">
                   <!-- 컵 뚜껑 -->
                   <path d="M14 16h20" />
-              
+
                   <!-- 컵 몸통 -->
                   <path d="M16 16l2 22h12l2-22" />
-              
+
                   <!-- 컵 슬리브 -->
                   <path d="M17 24h14" />
                   <path d="M18 31h12" />
-              
+
                   <!-- 따뜻한 음료 증기 -->
                   <path d="M20 12c-2-2 2-4 0-6" />
                   <path d="M28 12c-2-2 2-4 0-6" />
                 </svg>
               </div>
-            
+
               <span class="event-step-number">STEP 04</span>
             </div>
             <h3 class="event-step-title">혜택 증정</h3>
@@ -1156,7 +1369,7 @@
             <span class="ui-badge">이벤트 혜택 안내</span>
           </article>
         </div>
-       
+
         <!-- ============ event - 하단 참여 영역 (담당: C) ============ -->
 <div class="event-bottom-layout">
   <!-- 왼쪽: 혜택 + 베타 참여 -->
@@ -1246,6 +1459,53 @@
           placeholder="example@email.com"
         />
       </div>
+      <fieldset class="event-rating">
+        <legend class="event-rating-title">
+          사용 경험
+        </legend>
+
+        <div class="event-rating-options">
+          <label class="event-rating-option">
+            <input
+              type="radio"
+              name="experience-rating"
+              value="bad"
+            />
+            <span aria-hidden="true">😕</span>
+            <span>별로예요</span>
+          </label>
+
+          <label class="event-rating-option">
+            <input
+              type="radio"
+              name="experience-rating"
+              value="normal"
+            />
+            <span aria-hidden="true">😐</span>
+            <span>보통이에요</span>
+          </label>
+
+          <label class="event-rating-option">
+            <input
+              type="radio"
+              name="experience-rating"
+              value="good"
+            />
+            <span aria-hidden="true">🙂</span>
+            <span>좋아요</span>
+          </label>
+
+          <label class="event-rating-option">
+            <input
+              type="radio"
+              name="experience-rating"
+              value="great"
+            />
+            <span aria-hidden="true">😍</span>
+            <span>최고예요</span>
+          </label>
+        </div>
+      </fieldset>
 
       <div class="form-group">
         <label for="feedback-message" class="form-label">
@@ -1402,7 +1662,7 @@
           <p class="footer-description">
             오늘의 한 끼를 시작부터 최고의 한끼로.
           </p>
-         
+
         </div>
         <nav class="footer-links" aria-label="푸터 메뉴">
           <a href="#service" class="footer-link">서비스 소개</a>
@@ -1424,5 +1684,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./js/event-modals.js"></script>
+    <script src="./js/dice-blackjack.js"></script>
+    <script src="./js/pinball-game.js"></script>
   </body>
 </html>
